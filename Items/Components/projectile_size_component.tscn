@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://udgtq3a417aa"]
+
+[ext_resource type="Script" path="res://Items/Scripts/ProjectileSizeComponent.gd" id="1_vmjev"]
+
+[node name="ProjectileSizeComponent" type="Node3D"]
+script = ExtResource("1_vmjev")

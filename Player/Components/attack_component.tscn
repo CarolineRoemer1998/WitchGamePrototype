@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://cufa0xtshck13"]
+
+[ext_resource type="Script" path="res://Player/Scripts/AttackComponent.gd" id="1_h3urw"]
+
+[node name="AttackComponent" type="Node3D" groups=["attack"]]
+script = ExtResource("1_h3urw")
+
+[node name="TimerCooldown" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="timeout" from="TimerCooldown" to="." method="_on_timer_cooldown_timeout"]

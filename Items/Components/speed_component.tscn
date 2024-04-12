@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ditkso8gfscxs"]
+
+[ext_resource type="Script" path="res://Items/Scripts/SpeedComponent.gd" id="1_0mpwd"]
+
+[node name="SpeedComponent" type="Node3D"]
+script = ExtResource("1_0mpwd")

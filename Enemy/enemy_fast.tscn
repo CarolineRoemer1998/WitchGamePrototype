@@ -1,0 +1,113 @@
+[gd_scene load_steps=16 format=3 uid="uid://crn5pndv6r2tj"]
+
+[ext_resource type="Script" path="res://Enemy/enemy.gd" id="1_hnx1q"]
+[ext_resource type="PackedScene" uid="uid://bqumlnt1nj0nr" path="res://Enemy/Components/enemy_attack.tscn" id="1_x25b7"]
+[ext_resource type="PackedScene" uid="uid://b8u5vgpjkt2wj" path="res://Attacks/projectile_4_ways.tscn" id="2_2e2ho"]
+[ext_resource type="PackedScene" uid="uid://de7qa7h6f2nbp" path="res://Enemy/Components/enemy_health.tscn" id="3_llrye"]
+[ext_resource type="PackedScene" uid="uid://kiwc4v3xkajw" path="res://Enemy/Components/health_bar_enemy.tscn" id="5_gm6rw"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_15oex"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j5tm4"]
+albedo_color = Color(1, 0.643137, 0, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ppav8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2g8di"]
+albedo_color = Color(0.933333, 0.407843, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_7qfxg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ibmny"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hbxrj"]
+
+[sub_resource type="Animation" id="Animation_qyeub"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DamageHighlight:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_evw0q"]
+resource_name = "TakeDamage"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DamageHighlight:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_41ngq"]
+_data = {
+"RESET": SubResource("Animation_qyeub"),
+"TakeDamage": SubResource("Animation_evw0q")
+}
+
+[node name="Enemy_Fast" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+collision_layer = 4
+collision_mask = 25
+script = ExtResource("1_hnx1q")
+SPEED = 5.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_15oex")
+
+[node name="Pivot" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pivot"]
+material_override = SubResource("StandardMaterial3D_j5tm4")
+mesh = SubResource("CapsuleMesh_ppav8")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Pivot"]
+transform = Transform3D(0.7, 0, 0, 0, 0.3, 0, 0, 0, 0.5, 0, 0.4, 0.3)
+material_override = SubResource("StandardMaterial3D_2g8di")
+mesh = SubResource("BoxMesh_7qfxg")
+
+[node name="DamageHighlight" type="Node3D" parent="."]
+visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="DamageHighlight"]
+material_override = SubResource("StandardMaterial3D_ibmny")
+mesh = SubResource("CapsuleMesh_ppav8")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="DamageHighlight"]
+transform = Transform3D(0.7, 0, 0, 0, 0.3, 0, 0, 0, 0.5, 0, 0.4, 0.3)
+material_override = SubResource("StandardMaterial3D_hbxrj")
+mesh = SubResource("BoxMesh_7qfxg")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="EnemyAttack" parent="." instance=ExtResource("1_x25b7")]
+strength = 10
+cool_down = 1.5
+projectile = ExtResource("2_2e2ho")
+projectile_speed = 15
+
+[node name="EnemyHealth" parent="." instance=ExtResource("3_llrye")]
+max_health = 50
+
+[node name="HealthBarEnemy" parent="." node_paths=PackedStringArray("enemy") instance=ExtResource("5_gm6rw")]
+enemy = NodePath("..")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_41ngq")
+}

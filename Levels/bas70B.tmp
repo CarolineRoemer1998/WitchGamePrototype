@@ -1,0 +1,371 @@
+[gd_scene load_steps=13 format=3 uid="uid://cl0psxogcta0f"]
+
+[ext_resource type="PackedScene" uid="uid://dxehi8jgwk5p4" path="res://Components/Scenes/click_manager.tscn" id="1_kvy0y"]
+[ext_resource type="PackedScene" uid="uid://2vh5on6p5gqs" path="res://Components/Scenes/game_handler.tscn" id="2_j66m1"]
+[ext_resource type="Material" uid="uid://bpqw2klv8hgco" path="res://Colors/grass.tres" id="3_bifdw"]
+[ext_resource type="PackedScene" uid="uid://r2rfn4ebfcdf" path="res://Components/Scenes/scene_loader.tscn" id="4_85itp"]
+[ext_resource type="PackedScene" uid="uid://bpxxhtfbucivk" path="res://Player/player.tscn" id="4_ouymb"]
+[ext_resource type="PackedScene" uid="uid://og2eqnvvmr2g" path="res://Components/Scenes/enemy_spawner.tscn" id="5_6qwkf"]
+[ext_resource type="PackedScene" uid="uid://nhwcrirmgdja" path="res://UI/health_bar.tscn" id="6_c1yea"]
+[ext_resource type="PackedScene" uid="uid://vy3x5xp7omrd" path="res://Components/Scenes/item_spawner.tscn" id="7_y6odl"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_6weg5"]
+sky_top_color = Color(0.513726, 0.960784, 0.968627, 1)
+sky_horizon_color = Color(0.673529, 0.802941, 0.772549, 1)
+ground_bottom_color = Color(0.180392, 0.25098, 0.121569, 1)
+ground_horizon_color = Color(0.673529, 0.802941, 0.772549, 1)
+
+[sub_resource type="Sky" id="Sky_cqsja"]
+sky_material = SubResource("ProceduralSkyMaterial_6weg5")
+
+[sub_resource type="Environment" id="Environment_0s0ii"]
+background_mode = 2
+sky = SubResource("Sky_cqsja")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_c3mwt"]
+vertices = PackedVector3Array(-9.18, 3.45, -10.355, -2.18, 3.45, -10.355, -2.18, 3.45, -11.355, -9.68, 3.45, -11.355, -17.18, 3.45, -2.855, -16.18, 3.45, -2.855, -15.93, 3.45, -10.355, -17.18, 3.45, -11.355, -15.93, 3.45, -10.355, -9.18, 3.45, -10.355, -9.68, 3.45, -11.355, -17.18, 3.45, -11.355, -1.43, 0.45, 8.645, -1.18, 0.45, 10.395, 1.32, 0.45, 10.395, 1.57, 0.45, 8.645, 1.57, 0.45, -9.355, -1.43, 0.45, -9.355, -3.43, 0.45, -9.355, -3.43, 0.45, 8.645, -1.43, 0.45, 8.645, -1.43, 0.45, -9.355, 1.57, 0.45, -9.355, 1.32, 0.45, -11.355, -1.18, 0.45, -11.355, -1.43, 0.45, -9.355, 1.57, 0.45, 8.645, 3.57, 0.45, 8.645, 3.57, 0.45, -9.355, 1.57, 0.45, -9.355, 2.32, 3.45, -11.355, 2.32, 3.45, -10.355, 9.07, 3.45, -10.355, 9.57, 3.45, -11.355, 16.07, 3.45, -10.355, 16.32, 3.45, -2.855, 17.07, 3.45, -2.855, 17.07, 3.45, -11.355, 9.57, 3.45, -11.355, 9.07, 3.45, -10.355, 16.07, 3.45, -10.355, 17.07, 3.45, -11.355, -15.18, 0.45, -11.105, -15.18, 0.45, -10.605, -8.93, 0.45, -10.605, -8.93, 0.45, -11.105, -8.93, 0.45, -10.605, -2.43, 0.45, -10.605, -2.43, 0.45, -11.105, -8.93, 0.45, -11.105, 2.57, 0.45, -11.105, 2.57, 0.45, -10.605, 8.82, 0.45, -10.605, 8.82, 0.45, -11.105, 8.82, 0.45, -10.605, 15.32, 0.45, -10.605, 15.32, 0.45, -11.105, 8.82, 0.45, -11.105, -16.93, 0.45, -9.355, -16.93, 0.45, -3.105, -16.43, 0.45, -3.105, -16.43, 0.45, -9.355, -15.18, 0.45, -2.105, -17.18, 0.45, -1.855, -17.18, 0.45, 0.895, -15.18, 0.45, 1.145, -3.43, 0.45, -9.355, -15.18, 0.45, -2.105, -15.18, 0.45, 1.145, -3.43, 0.45, 8.645, -3.43, 0.45, -9.355, -15.18, 0.45, -9.355, -15.18, 0.45, -2.105, -15.18, 0.45, 1.145, -15.18, 0.45, 8.645, -3.43, 0.45, 8.645, 15.32, 0.45, 1.145, 17.07, 0.45, 0.895, 17.07, 0.45, -1.855, 15.32, 0.45, -2.105, 15.32, 0.45, 1.145, 15.32, 0.45, -2.105, 3.57, 0.45, -9.355, 3.57, 0.45, 8.645, 15.32, 0.45, -2.105, 15.32, 0.45, -9.355, 3.57, 0.45, -9.355, 3.57, 0.45, 8.645, 15.32, 0.45, 8.645, 15.32, 0.45, 1.145, 16.57, 0.45, -9.355, 16.57, 0.45, -3.105, 17.07, 0.45, -3.105, 17.07, 0.45, -9.355, -2.18, 3.45, 10.395, -2.18, 3.45, 9.645, -9.18, 3.45, 9.645, -9.68, 3.45, 10.395, -17.18, 3.45, 1.895, -17.18, 3.45, 10.395, -15.93, 3.45, 9.645, -16.18, 3.45, 1.895, -9.68, 3.45, 10.395, -9.18, 3.45, 9.645, -15.93, 3.45, 9.645, -17.18, 3.45, 10.395, 9.07, 3.45, 9.645, 2.32, 3.45, 9.645, 2.32, 3.45, 10.395, 9.57, 3.45, 10.395, 17.07, 3.45, 1.895, 16.32, 3.45, 1.895, 16.07, 3.45, 9.645, 17.07, 3.45, 10.395, 16.07, 3.45, 9.645, 9.07, 3.45, 9.645, 9.57, 3.45, 10.395, 17.07, 3.45, 10.395, -16.93, 0.45, 2.145, -16.93, 0.45, 8.645, -16.43, 0.45, 8.645, -16.43, 0.45, 2.145, 16.57, 0.45, 2.145, 16.57, 0.45, 8.645, 17.07, 0.45, 8.645, 17.07, 0.45, 2.145, -15.18, 0.45, 9.895, -15.18, 0.45, 10.395, -8.93, 0.45, 10.395, -8.93, 0.45, 9.895, -8.93, 0.45, 10.395, -2.43, 0.45, 10.395, -2.43, 0.45, 9.895, -8.93, 0.45, 9.895, 2.57, 0.45, 9.895, 2.57, 0.45, 10.395, 8.82, 0.45, 10.395, 8.82, 0.45, 9.895, 8.82, 0.45, 10.395, 15.32, 0.45, 10.395, 15.32, 0.45, 9.895, 8.82, 0.45, 9.895)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(5, 4, 6), PackedInt32Array(6, 4, 7), PackedInt32Array(9, 8, 10), PackedInt32Array(10, 8, 11), PackedInt32Array(13, 12, 14), PackedInt32Array(14, 12, 15), PackedInt32Array(15, 12, 17), PackedInt32Array(15, 17, 16), PackedInt32Array(21, 20, 18), PackedInt32Array(18, 20, 19), PackedInt32Array(23, 22, 24), PackedInt32Array(24, 22, 25), PackedInt32Array(29, 28, 26), PackedInt32Array(26, 28, 27), PackedInt32Array(31, 30, 32), PackedInt32Array(32, 30, 33), PackedInt32Array(35, 34, 36), PackedInt32Array(36, 34, 37), PackedInt32Array(39, 38, 40), PackedInt32Array(40, 38, 41), PackedInt32Array(45, 44, 42), PackedInt32Array(42, 44, 43), PackedInt32Array(49, 48, 46), PackedInt32Array(46, 48, 47), PackedInt32Array(53, 52, 50), PackedInt32Array(50, 52, 51), PackedInt32Array(57, 56, 54), PackedInt32Array(54, 56, 55), PackedInt32Array(61, 60, 58), PackedInt32Array(58, 60, 59), PackedInt32Array(63, 62, 64), PackedInt32Array(64, 62, 65), PackedInt32Array(67, 66, 68), PackedInt32Array(68, 66, 69), PackedInt32Array(72, 71, 70), PackedInt32Array(75, 74, 73), PackedInt32Array(77, 76, 78), PackedInt32Array(78, 76, 79), PackedInt32Array(81, 80, 82), PackedInt32Array(82, 80, 83), PackedInt32Array(86, 85, 84), PackedInt32Array(89, 88, 87), PackedInt32Array(93, 92, 90), PackedInt32Array(90, 92, 91), PackedInt32Array(95, 94, 96), PackedInt32Array(96, 94, 97), PackedInt32Array(101, 100, 98), PackedInt32Array(98, 100, 99), PackedInt32Array(103, 102, 104), PackedInt32Array(104, 102, 105), PackedInt32Array(107, 106, 108), PackedInt32Array(108, 106, 109), PackedInt32Array(111, 110, 112), PackedInt32Array(112, 110, 113), PackedInt32Array(115, 114, 116), PackedInt32Array(116, 114, 117), PackedInt32Array(121, 120, 118), PackedInt32Array(118, 120, 119), PackedInt32Array(125, 124, 122), PackedInt32Array(122, 124, 123), PackedInt32Array(129, 128, 126), PackedInt32Array(126, 128, 127), PackedInt32Array(133, 132, 130), PackedInt32Array(130, 132, 131), PackedInt32Array(137, 136, 134), PackedInt32Array(134, 136, 135), PackedInt32Array(141, 140, 138), PackedInt32Array(138, 140, 139)]
+
+[node name="BaseLevel" type="Node3D"]
+
+[node name="Settings" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Settings"]
+environment = SubResource("Environment_0s0ii")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Settings"]
+transform = Transform3D(1, -1.51421e-07, 8.74228e-08, 0, 0.5, 0.866025, -1.74846e-07, -0.866025, 0.5, 0, 0, 0)
+light_color = Color(1, 0.956863, 0.721569, 1)
+light_energy = 2.0
+shadow_enabled = true
+
+[node name="GameHandler" parent="Settings" instance=ExtResource("2_j66m1")]
+
+[node name="RoomCurrent" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_c3mwt")
+
+[node name="ClickManager" parent="RoomCurrent" groups=["camera"] instance=ExtResource("1_kvy0y")]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 35, 20)
+
+[node name="World" type="Node3D" parent="RoomCurrent"]
+
+[node name="Ground" type="CSGBox3D" parent="RoomCurrent/World"]
+transform = Transform3D(1.17708, 0, 0, 0, 1.1, 0, 0, 0, 1.32, 0, -0.5, -0.4)
+material_override = ExtResource("3_bifdw")
+use_collision = true
+collision_layer = 16
+size = Vector3(30, 1, 17.1881)
+
+[node name="WallLeft" type="CSGBox3D" parent="RoomCurrent/World"]
+transform = Transform3D(0.88, 0, 0, 0, 0.528, 0, 0, 0, 0.88, -16.8, 1.5, 5.985)
+material_override = ExtResource("3_bifdw")
+use_collision = true
+collision_layer = 16
+size = Vector3(2, 6, 10)
+
+[node name="WallLeft2" type="CSGBox3D" parent="RoomCurrent/World"]
+transform = Transform3D(0.88, 0, 0, 0, 0.528, 0, 0, 0, 0.88, -16.8, 1.5, -6.975)
+material_override = ExtResource("3_bifdw")
+use_collision = true
+collision_layer = 16
+size = Vector3(2, 6, 10)
+
+[node name="WallRight" type="CSGBox3D" parent="RoomCurrent/World"]
+transform = Transform3D(0.88, 0, 0, 0, 0.528, 0, 0, 0, 0.88, 16.8, 1.5, 5.985)
+material_override = ExtResource("3_bifdw")
+use_collision = true
+collision_layer = 16
+size = Vector3(2, 6, 10)
+
+[node name="WallRight2" type="CSGBox3D" parent="RoomCurrent/World"]
+transform = Transform3D(0.88, 0, 0, 0, 0.528, 0, 0, 0, 0.88, 16.8, 1.5, -6.975)
+material_override = ExtResource("3_bifdw")
+use_collision = true
+collision_layer = 16
+size = Vector3(2, 6, 10)
+
+[node name="WallTop" type="CSGBox3D" parent="RoomCurrent/World"]
+transform = Transform3D(0.88, 0, 0, 0, 0.528, 0, 0, 0, 0.88, -9.76, 1.5, -10.975)
+material_override = ExtResource("3_bifdw")
+use_collision = true
+collision_layer = 16
+size = Vector3(18, 6, 2)
+
+[node name="WallTop2" type="CSGBox3D" parent="RoomCurrent/World"]
+transform = Transform3D(0.88, 0, 0, 0, 0.528, 0, 0, 0, 0.88, 9.76, 1.5, -10.975)
+material_override = ExtResource("3_bifdw")
+use_collision = true
+collision_layer = 16
+size = Vector3(18, 6, 2)
+
+[node name="WallBottom" type="CSGBox3D" parent="RoomCurrent/World"]
+transform = Transform3D(0.88, 0, 0, 0, 0.528, 0, 0, 0, 0.88, -9.76, 1.5, 10.065)
+material_override = ExtResource("3_bifdw")
+use_collision = true
+collision_layer = 16
+size = Vector3(18, 6, 2)
+
+[node name="WallBottom2" type="CSGBox3D" parent="RoomCurrent/World"]
+transform = Transform3D(0.88, 0, 0, 0, 0.528, 0, 0, 0, 0.88, 9.76, 1.5, 10.065)
+material_override = ExtResource("3_bifdw")
+use_collision = true
+collision_layer = 16
+size = Vector3(18, 6, 2)
+
+[node name="RoomLeft" type="NavigationRegion3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.5, 0, 0)
+navigation_mesh = SubResource("NavigationMesh_c3mwt")
+
+[node name="SceneLoader" parent="RoomLeft" instance=ExtResource("4_85itp")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 16.8, 1.3, -0.5)
+
+[node name="World" type="Node3D" parent="RoomLeft"]
+
+[node name="Ground" type="CSGBox3D" parent="RoomLeft/World"]
+transform = Transform3D(1.17708, 0, 0, 0, 1.1, 0, 0, 0, 1.32, 0, -0.5, -0.4)
+material_override = ExtResource("3_bifdw")
+use_collision = true
+collision_layer = 16
+size = Vector3(30, 1, 17.1881)
+
+[node name="WallLeft" type="CSGBox3D" parent="RoomLeft/World"]
+transform = Transform3D(0.88, 0, 0, 0, 0.528, 0, 0, 0, 0.88, -16.8, 1.5, 5.985)
+material_override = ExtResource("3_bifdw")
+use_collision = true
+collision_layer = 16
+size = Vector3(2, 6, 10)
+
+[node name="WallLeft2" type="CSGBox3D" parent="RoomLeft/World"]
+transform = Transform3D(0.88, 0, 0, 0, 0.528, 0, 0, 0, 0.88, -16.8, 1.5, -6.975)
+material_override = ExtResource("3_bifdw")
+use_collision = true
+collision_layer = 16
+size = Vector3(2, 6, 10)
+
+[node name="WallRight" type="CSGBox3D" parent="RoomLeft/World"]
+transform = Transform3D(0.88, 0, 0, 0, 0.528, 0, 0, 0, 0.88, 16.8, 1.5, 5.985)
+material_override = ExtResource("3_bifdw")
+use_collision = true
+collision_layer = 16
+size = Vector3(2, 6, 10)
+
+[node name="WallRight2" type="CSGBox3D" parent="RoomLeft/World"]
+transform = Transform3D(0.88, 0, 0, 0, 0.528, 0, 0, 0, 0.88, 16.8, 1.5, -6.975)
+material_override = ExtResource("3_bifdw")
+use_collision = true
+collision_layer = 16
+size = Vector3(2, 6, 10)
+
+[node name="WallTop" type="CSGBox3D" parent="RoomLeft/World"]
+transform = Transform3D(0.88, 0, 0, 0, 0.528, 0, 0, 0, 0.88, -9.76, 1.5, -10.975)
+material_override = ExtResource("3_bifdw")
+use_collision = true
+collision_layer = 16
+size = Vector3(18, 6, 2)
+
+[node name="WallTop2" type="CSGBox3D" parent="RoomLeft/World"]
+transform = Transform3D(0.88, 0, 0, 0, 0.528, 0, 0, 0, 0.88, 9.76, 1.5, -10.975)
+material_override = ExtResource("3_bifdw")
+use_collision = true
+collision_layer = 16
+size = Vector3(18, 6, 2)
+
+[node name="WallBottom" type="CSGBox3D" parent="RoomLeft/World"]
+transform = Transform3D(0.88, 0, 0, 0, 0.528, 0, 0, 0, 0.88, -9.76, 1.5, 10.065)
+material_override = ExtResource("3_bifdw")
+use_collision = true
+collision_layer = 16
+size = Vector3(18, 6, 2)
+
+[node name="WallBottom2" type="CSGBox3D" parent="RoomLeft/World"]
+transform = Transform3D(0.88, 0, 0, 0, 0.528, 0, 0, 0, 0.88, 9.76, 1.5, 10.065)
+material_override = ExtResource("3_bifdw")
+use_collision = true
+collision_layer = 16
+size = Vector3(18, 6, 2)
+
+[node name="RoomRight" type="NavigationRegion3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.6, 0, 0)
+navigation_mesh = SubResource("NavigationMesh_c3mwt")
+
+[node name="SceneLoader" parent="RoomRight" instance=ExtResource("4_85itp")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -16.8, 1.3, -0.5)
+
+[node name="World" type="Node3D" parent="RoomRight"]
+
+[node name="Ground" type="CSGBox3D" parent="RoomRight/World"]
+transform = Transform3D(1.17708, 0, 0, 0, 1.1, 0, 0, 0, 1.32, 0, -0.5, -0.4)
+material_override = ExtResource("3_bifdw")
+use_collision = true
+collision_layer = 16
+size = Vector3(30, 1, 17.1881)
+
+[node name="WallLeft" type="CSGBox3D" parent="RoomRight/World"]
+transform = Transform3D(0.88, 0, 0, 0, 0.528, 0, 0, 0, 0.88, -16.8, 1.5, 5.985)
+material_override = ExtResource("3_bifdw")
+use_collision = true
+collision_layer = 16
+size = Vector3(2, 6, 10)
+
+[node name="WallLeft2" type="CSGBox3D" parent="RoomRight/World"]
+transform = Transform3D(0.88, 0, 0, 0, 0.528, 0, 0, 0, 0.88, -16.8, 1.5, -6.975)
+material_override = ExtResource("3_bifdw")
+use_collision = true
+collision_layer = 16
+size = Vector3(2, 6, 10)
+
+[node name="WallRight" type="CSGBox3D" parent="RoomRight/World"]
+transform = Transform3D(0.88, 0, 0, 0, 0.528, 0, 0, 0, 0.88, 16.8, 1.5, 5.985)
+material_override = ExtResource("3_bifdw")
+use_collision = true
+collision_layer = 16
+size = Vector3(2, 6, 10)
+
+[node name="WallRight2" type="CSGBox3D" parent="RoomRight/World"]
+transform = Transform3D(0.88, 0, 0, 0, 0.528, 0, 0, 0, 0.88, 16.8, 1.5, -6.975)
+material_override = ExtResource("3_bifdw")
+use_collision = true
+collision_layer = 16
+size = Vector3(2, 6, 10)
+
+[node name="WallTop" type="CSGBox3D" parent="RoomRight/World"]
+transform = Transform3D(0.88, 0, 0, 0, 0.528, 0, 0, 0, 0.88, -9.76, 1.5, -10.975)
+material_override = ExtResource("3_bifdw")
+use_collision = true
+collision_layer = 16
+size = Vector3(18, 6, 2)
+
+[node name="WallTop2" type="CSGBox3D" parent="RoomRight/World"]
+transform = Transform3D(0.88, 0, 0, 0, 0.528, 0, 0, 0, 0.88, 9.76, 1.5, -10.975)
+material_override = ExtResource("3_bifdw")
+use_collision = true
+collision_layer = 16
+size = Vector3(18, 6, 2)
+
+[node name="WallBottom" type="CSGBox3D" parent="RoomRight/World"]
+transform = Transform3D(0.88, 0, 0, 0, 0.528, 0, 0, 0, 0.88, -9.76, 1.5, 10.065)
+material_override = ExtResource("3_bifdw")
+use_collision = true
+collision_layer = 16
+size = Vector3(18, 6, 2)
+
+[node name="WallBottom2" type="CSGBox3D" parent="RoomRight/World"]
+transform = Transform3D(0.88, 0, 0, 0, 0.528, 0, 0, 0, 0.88, 9.76, 1.5, 10.065)
+material_override = ExtResource("3_bifdw")
+use_collision = true
+collision_layer = 16
+size = Vector3(18, 6, 2)
+
+[node name="RoomTop" type="NavigationRegion3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -21)
+navigation_mesh = SubResource("NavigationMesh_c3mwt")
+
+[node name="SceneLoader" parent="RoomTop" instance=ExtResource("4_85itp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3, 10)
+
+[node name="World" type="Node3D" parent="RoomTop"]
+
+[node name="Ground" type="CSGBox3D" parent="RoomTop/World"]
+transform = Transform3D(1.17708, 0, 0, 0, 1.1, 0, 0, 0, 1.32, 0, -0.5, -0.4)
+material_override = ExtResource("3_bifdw")
+use_collision = true
+collision_layer = 16
+size = Vector3(30, 1, 17.1881)
+
+[node name="WallLeft" type="CSGBox3D" parent="RoomTop/World"]
+transform = Transform3D(0.88, 0, 0, 0, 0.528, 0, 0, 0, 0.88, -16.8, 1.5, 5.985)
+material_override = ExtResource("3_bifdw")
+use_collision = true
+collision_layer = 16
+size = Vector3(2, 6, 10)
+
+[node name="WallLeft2" type="CSGBox3D" parent="RoomTop/World"]
+transform = Transform3D(0.88, 0, 0, 0, 0.528, 0, 0, 0, 0.88, -16.8, 1.5, -6.975)
+material_override = ExtResource("3_bifdw")
+use_collision = true
+collision_layer = 16
+size = Vector3(2, 6, 10)
+
+[node name="WallRight" type="CSGBox3D" parent="RoomTop/World"]
+transform = Transform3D(0.88, 0, 0, 0, 0.528, 0, 0, 0, 0.88, 16.8, 1.5, 5.985)
+material_override = ExtResource("3_bifdw")
+use_collision = true
+collision_layer = 16
+size = Vector3(2, 6, 10)
+
+[node name="WallRight2" type="CSGBox3D" parent="RoomTop/World"]
+transform = Transform3D(0.88, 0, 0, 0, 0.528, 0, 0, 0, 0.88, 16.8, 1.5, -6.975)
+material_override = ExtResource("3_bifdw")
+use_collision = true
+collision_layer = 16
+size = Vector3(2, 6, 10)
+
+[node name="WallTop" type="CSGBox3D" parent="RoomTop/World"]
+transform = Transform3D(0.88, 0, 0, 0, 0.528, 0, 0, 0, 0.88, -9.76, 1.5, -10.975)
+material_override = ExtResource("3_bifdw")
+use_collision = true
+collision_layer = 16
+size = Vector3(18, 6, 2)
+
+[node name="WallTop2" type="CSGBox3D" parent="RoomTop/World"]
+transform = Transform3D(0.88, 0, 0, 0, 0.528, 0, 0, 0, 0.88, 9.76, 1.5, -10.975)
+material_override = ExtResource("3_bifdw")
+use_collision = true
+collision_layer = 16
+size = Vector3(18, 6, 2)
+
+[node name="WallBottom" type="CSGBox3D" parent="RoomTop/World"]
+transform = Transform3D(0.88, 0, 0, 0, 0.528, 0, 0, 0, 0.88, -9.76, 1.5, 10.065)
+material_override = ExtResource("3_bifdw")
+use_collision = true
+collision_layer = 16
+size = Vector3(18, 6, 2)
+
+[node name="WallBottom2" type="CSGBox3D" parent="RoomTop/World"]
+transform = Transform3D(0.88, 0, 0, 0, 0.528, 0, 0, 0, 0.88, 9.76, 1.5, 10.065)
+material_override = ExtResource("3_bifdw")
+use_collision = true
+collision_layer = 16
+size = Vector3(18, 6, 2)
+
+[node name="Player" parent="." groups=["player"] instance=ExtResource("4_ouymb")]
+
+[node name="EnemySpawners" type="Node3D" parent="."]
+
+[node name="EnemySpawner" parent="EnemySpawners" instance=ExtResource("5_6qwkf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0.05, 6)
+
+[node name="EnemySpawner2" parent="EnemySpawners" instance=ExtResource("5_6qwkf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0.15, -6)
+
+[node name="UI" type="Node3D" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="UI"]
+
+[node name="CenterContainer" type="CenterContainer" parent="UI/CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -30.0
+offset_top = 30.0
+offset_right = -30.0
+offset_bottom = 30.0
+grow_horizontal = 0
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="HealthBar" parent="UI/CanvasLayer/CenterContainer" node_paths=PackedStringArray("player") instance=ExtResource("6_c1yea")]
+layout_mode = 2
+player = NodePath("../../../../Player")
+
+[node name="ItemSpawners" type="Node3D" parent="."]
+
+[node name="ItemSpawner" parent="ItemSpawners" instance=ExtResource("7_y6odl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 6)
+
+[node name="ItemSpawner2" parent="ItemSpawners" instance=ExtResource("7_y6odl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -6)
+
+[editable path="Player"]

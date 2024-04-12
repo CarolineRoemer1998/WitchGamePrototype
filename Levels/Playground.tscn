@@ -1,0 +1,161 @@
+[gd_scene load_steps=14 format=3 uid="uid://dg5ajsfko6xvm"]
+
+[ext_resource type="PackedScene" uid="uid://2vh5on6p5gqs" path="res://Game Behaviour/Scenes/game_handler.tscn" id="1_4dbgd"]
+[ext_resource type="PackedScene" uid="uid://bpxxhtfbucivk" path="res://Player/player.tscn" id="2_ih000"]
+[ext_resource type="PackedScene" uid="uid://drl04tohdma0v" path="res://Enemy/enemy.tscn" id="3_abnnd"]
+[ext_resource type="Material" uid="uid://bpqw2klv8hgco" path="res://Colors/grass.tres" id="4_6glwa"]
+[ext_resource type="Material" uid="uid://b2mvfxpnwob45" path="res://Colors/obstacle.tres" id="5_bm74m"]
+[ext_resource type="PackedScene" uid="uid://janmiwhmnrvb" path="res://Items/ItemSpeed.tscn" id="6_s7sfd"]
+[ext_resource type="PackedScene" uid="uid://bqukwqqitqyb4" path="res://Items/ItemProjectileCooldown.tscn" id="7_3qbnh"]
+[ext_resource type="PackedScene" uid="uid://byhak83hf3fku" path="res://Items/ItemProjectileSize.tscn" id="8_jsjh3"]
+[ext_resource type="PackedScene" uid="uid://dxehi8jgwk5p4" path="res://Game Behaviour/Scenes/click_manager.tscn" id="9_12m6k"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jh72d"]
+sky_top_color = Color(0.513726, 0.960784, 0.968627, 1)
+sky_horizon_color = Color(0.673529, 0.802941, 0.772549, 1)
+ground_bottom_color = Color(0.180392, 0.25098, 0.121569, 1)
+ground_horizon_color = Color(0.673529, 0.802941, 0.772549, 1)
+
+[sub_resource type="Sky" id="Sky_lxnop"]
+sky_material = SubResource("ProceduralSkyMaterial_jh72d")
+
+[sub_resource type="Environment" id="Environment_eektk"]
+background_mode = 2
+sky = SubResource("Sky_lxnop")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_wcp8c"]
+vertices = PackedVector3Array(-2.85, 0.45, -4.05, -0.85, 0.45, -4.55, -0.85, 0.45, -6.3, -2.85, 0.45, -4.05, -0.85, 0.45, -6.3, -0.1, 0.45, -8.05, -0.1, 0.45, -8.05, 2.65, 0.45, -9.05, 2.65, 0.45, -13.8, -7.6, 0.45, 13.7, -7.6, 0.45, 8.2, -10.6, 0.45, 7.45, -17.85, 0.45, 13.7, -0.1, 0.45, -8.05, 2.65, 0.45, -13.8, -5.1, 0.45, -13.8, -2.85, 0.45, -4.05, -7.85, 0.45, 4.45, -3.35, 0.45, -0.8, -3.6, 0.45, -2.8, -10.6, 0.45, 4.7, -17.85, 0.45, 13.7, -10.6, 0.45, 7.45, -10.6, 0.45, 4.7, -28.1, 0.45, -0.0500002, -28.1, 0.45, 6.7, -28.1, 0.45, 6.7, -28.1, 0.45, 13.7, -17.85, 0.45, 13.7, -20.6, 0.45, -13.8, -28.1, 0.45, -13.8, -28.1, 0.45, -7.05, -20.6, 0.45, -13.8, -28.1, 0.45, -7.05, -28.1, 0.45, -0.0500002, -10.6, 0.45, 4.7, -3.6, 0.45, -2.8, -12.85, 0.45, -13.8, -3.6, 0.45, -2.8, -2.85, 0.45, -4.05, -5.1, 0.45, -13.8, -12.85, 0.45, -13.8, 5.65, 0.45, -3.05, 4.15, 0.45, -2.3, 4.65, 0.45, -1.3, 5.65, 0.45, -3.05, 4.65, 0.45, -1.3, 4.15, 0.45, 0.7, 2.65, 0.45, 13.7, 8.9, 0.45, 13.7, 2.65, 0.45, -13.8, 2.65, 0.45, -9.05, 5.15, 0.45, -8.3, 8.9, 0.45, -13.8, 2.65, 0.45, -13.8, 5.15, 0.45, -8.3, 6.4, 0.45, -5.8, 15.4, 0.45, 13.7, 21.65, 0.45, 13.7, 28.15, 0.45, 6.7, 28.15, 0.45, -7.05, 28.15, 0.45, -13.8, 21.65, 0.45, -13.8, 21.65, 0.45, 13.7, 28.15, 0.45, 13.7, 28.15, 0.45, 6.7, 8.9, 0.45, -13.8, 6.4, 0.45, -5.8, 5.65, 0.45, -3.05, 15.4, 0.45, -13.8, 4.15, 0.45, 0.7, 2.65, 0.45, 1.45, 2.65, 0.45, 13.7, 15.4, 0.45, 13.7, 28.15, 0.45, 6.7, 28.15, 0.45, -0.0500002, 15.4, 0.45, -13.8, 5.65, 0.45, -3.05, 8.9, 0.45, 13.7, 28.15, 0.45, -7.05, 21.65, 0.45, -13.8, 15.4, 0.45, -13.8, 28.15, 0.45, -0.0500002, 2.4, 3.45, -2.8, 4.65, 3.45, -3.55, 5.15, 3.45, -4.8, 0.9, 3.45, -7.3, 0.15, 3.45, -5.8, 0.65, 3.45, -3.8, 4.65, 3.45, -7.3, 2.9, 3.45, -8.05, 0.9, 3.45, -7.3, 0.65, 3.45, -3.8, 2.4, 3.45, -2.8, 5.15, 3.45, -4.8, 0.4, 0.45, -5.55, 0.9, 0.45, -4.05, 2.15, 0.45, -3.3, 4.9, 0.45, -5.05, 4.4, 0.45, -7.05, 3.15, 0.45, -7.55, 2.15, 0.45, -3.3, 4.4, 0.45, -3.8, 4.9, 0.45, -5.05, 3.15, 0.45, -7.55, 1.15, 0.45, -7.05, 0.4, 0.45, -5.55, -2.6, 2.45, -2.3, -2.35, 2.45, -1.05, -1.6, 2.45, -0.55, -0.6, 2.45, -3.55, -1.85, 2.45, -3.3, -2.6, 2.45, -2.3, -1.6, 2.45, -0.55, 0.15, 2.45, -0.8, 0.65, 2.45, -1.8, -2.1, 0.45, -1.3, -1.35, 0.45, -0.8, -0.6, 0.45, -0.8, -0.6, 0.45, -0.8, 0.15, 0.45, -1.55, 0.15, 0.45, -2.55, -0.85, 0.45, -3.3, -2.1, 0.45, -2.55, -2.1, 0.45, -1.3, 1.4, 1.45, -1.3, 1.9, 1.45, 0.2, 3.4, 1.45, -0.3, 2.9, 1.45, -1.8, -7.35, 0.45, 4.7, -7.35, 0.45, 5.95, -6.35, 0.45, 6.2, -1.6, 0.45, 0.7, -3.35, 0.45, -0.8, 0.9, 0.45, 0.95, 0.65, 0.45, 0.2, -1.6, 0.45, 0.7, 2.65, 0.45, 1.45, 0.9, 0.45, 0.95, -1.6, 0.45, 0.7, -6.35, 0.45, 7.95, -7.6, 0.45, 13.7, 2.65, 0.45, 13.7, -6.35, 0.45, 7.95, -7.6, 0.45, 8.2, -7.6, 0.45, 13.7, -3.35, 0.45, -0.8, -7.85, 0.45, 4.45, -7.35, 0.45, 4.7, -1.6, 0.45, 0.7, -6.35, 0.45, 6.2, -6.35, 0.45, 7.95, -9.6, 2.45, 5.45, -9.6, 2.45, 6.7, -8.35, 2.45, 6.7, -8.35, 2.45, 5.45, -9.35, 0.45, 5.7, -9.35, 0.45, 6.45, -8.6, 0.45, 6.45, -8.6, 0.45, 5.7)
+polygons = [PackedInt32Array(0, 2, 1), PackedInt32Array(5, 4, 3), PackedInt32Array(8, 7, 6), PackedInt32Array(10, 9, 11), PackedInt32Array(11, 9, 12), PackedInt32Array(14, 13, 15), PackedInt32Array(15, 13, 16), PackedInt32Array(18, 17, 19), PackedInt32Array(19, 17, 20), PackedInt32Array(22, 21, 23), PackedInt32Array(23, 21, 25), PackedInt32Array(23, 25, 24), PackedInt32Array(28, 27, 26), PackedInt32Array(31, 30, 29), PackedInt32Array(33, 32, 34), PackedInt32Array(34, 32, 37), PackedInt32Array(34, 37, 35), PackedInt32Array(35, 37, 36), PackedInt32Array(39, 38, 40), PackedInt32Array(40, 38, 41), PackedInt32Array(44, 43, 42), PackedInt32Array(46, 45, 47), PackedInt32Array(47, 45, 48), PackedInt32Array(48, 45, 49), PackedInt32Array(52, 51, 50), PackedInt32Array(55, 54, 56), PackedInt32Array(56, 54, 53), PackedInt32Array(59, 58, 57), PackedInt32Array(62, 61, 60), PackedInt32Array(65, 64, 63), PackedInt32Array(67, 66, 68), PackedInt32Array(68, 66, 69), PackedInt32Array(70, 72, 71), PackedInt32Array(74, 73, 75), PackedInt32Array(75, 73, 78), PackedInt32Array(75, 78, 77), PackedInt32Array(75, 77, 76), PackedInt32Array(80, 79, 81), PackedInt32Array(81, 79, 82), PackedInt32Array(83, 85, 84), PackedInt32Array(86, 88, 87), PackedInt32Array(90, 89, 91), PackedInt32Array(91, 89, 94), PackedInt32Array(91, 94, 92), PackedInt32Array(92, 94, 93), PackedInt32Array(97, 96, 95), PackedInt32Array(98, 100, 99), PackedInt32Array(102, 101, 103), PackedInt32Array(103, 101, 106), PackedInt32Array(103, 106, 105), PackedInt32Array(103, 105, 104), PackedInt32Array(109, 108, 107), PackedInt32Array(111, 110, 112), PackedInt32Array(112, 110, 113), PackedInt32Array(113, 110, 114), PackedInt32Array(114, 110, 115), PackedInt32Array(118, 117, 116), PackedInt32Array(120, 119, 121), PackedInt32Array(121, 119, 122), PackedInt32Array(122, 119, 123), PackedInt32Array(123, 119, 124), PackedInt32Array(128, 127, 125), PackedInt32Array(125, 127, 126), PackedInt32Array(130, 129, 131), PackedInt32Array(131, 129, 132), PackedInt32Array(132, 129, 133), PackedInt32Array(136, 135, 134), PackedInt32Array(138, 137, 139), PackedInt32Array(139, 137, 140), PackedInt32Array(140, 137, 141), PackedInt32Array(141, 137, 142), PackedInt32Array(145, 144, 143), PackedInt32Array(148, 147, 146), PackedInt32Array(151, 150, 149), PackedInt32Array(155, 154, 152), PackedInt32Array(152, 154, 153), PackedInt32Array(159, 158, 156), PackedInt32Array(156, 158, 157)]
+
+[node name="Playground" type="Node3D"]
+
+[node name="Settings" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Settings"]
+environment = SubResource("Environment_eektk")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Settings"]
+transform = Transform3D(1, -1.51421e-07, 8.74228e-08, 0, 0.5, 0.866025, -1.74846e-07, -0.866025, 0.5, 0, 0, 0)
+light_color = Color(1, 0.956863, 0.721569, 1)
+light_energy = 2.0
+shadow_enabled = true
+
+[node name="GameHandler" parent="Settings" instance=ExtResource("1_4dbgd")]
+
+[node name="Player" parent="." instance=ExtResource("2_ih000")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.0499999, 2)
+
+[node name="Enemy" parent="." instance=ExtResource("3_abnnd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 1, -9)
+
+[node name="Enemy2" parent="." instance=ExtResource("3_abnnd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 1, -9)
+
+[node name="Enemy3" parent="." instance=ExtResource("3_abnnd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 1, 9)
+
+[node name="Enemy4" parent="." instance=ExtResource("3_abnnd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 1, 9)
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_wcp8c")
+
+[node name="World" type="Node3D" parent="NavigationRegion3D"]
+
+[node name="Ground" type="CSGBox3D" parent="NavigationRegion3D/World"]
+transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0, -0.5, 0)
+material_override = ExtResource("4_6glwa")
+use_collision = true
+collision_layer = 16
+size = Vector3(52, 1, 26)
+
+[node name="WallLeft" type="CSGBox3D" parent="NavigationRegion3D/World"]
+transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, -30, -0.5, 0)
+material_override = ExtResource("4_6glwa")
+use_collision = true
+collision_layer = 16
+size = Vector3(4, 6, 30)
+
+[node name="WallRight" type="CSGBox3D" parent="NavigationRegion3D/World"]
+transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 30, -0.5, 0)
+material_override = ExtResource("4_6glwa")
+use_collision = true
+collision_layer = 16
+size = Vector3(4, 6, 30)
+
+[node name="WallTop" type="CSGBox3D" parent="NavigationRegion3D/World"]
+transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0, -0.5, -15)
+material_override = ExtResource("4_6glwa")
+use_collision = true
+collision_layer = 16
+size = Vector3(52, 6, 2)
+
+[node name="WallBottom" type="CSGBox3D" parent="NavigationRegion3D/World"]
+transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0, -0.5, 15)
+material_override = ExtResource("4_6glwa")
+use_collision = true
+collision_layer = 16
+size = Vector3(52, 6, 2)
+
+[node name="Cylinder1" type="CSGCylinder3D" parent="NavigationRegion3D/World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, -2)
+material_override = ExtResource("5_bm74m")
+use_collision = true
+collision_layer = 8
+radius = 2.0
+
+[node name="Cylinder2" type="CSGCylinder3D" parent="NavigationRegion3D/World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4, 0.5, -0.8)
+material_override = ExtResource("5_bm74m")
+use_collision = true
+collision_layer = 8
+radius = 1.5
+height = 1.0
+
+[node name="Cylinder3" type="CSGCylinder3D" parent="NavigationRegion3D/World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7, 1.5, -5.4)
+material_override = ExtResource("5_bm74m")
+use_collision = true
+collision_layer = 8
+radius = 3.0
+height = 3.0
+
+[node name="Box1" type="CSGBox3D" parent="NavigationRegion3D/World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 1, 6)
+material_override = ExtResource("5_bm74m")
+use_collision = true
+collision_mask = 8
+size = Vector3(2, 2, 2)
+
+[node name="Box2" type="CSGBox3D" parent="NavigationRegion3D/World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0.5, 7)
+material_override = ExtResource("5_bm74m")
+use_collision = true
+collision_mask = 8
+
+[node name="Items" type="Node3D" parent="."]
+
+[node name="ItemSpeed" parent="Items" instance=ExtResource("6_s7sfd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.855, 0.6, 8.285)
+
+[node name="ItemSpeed2" parent="Items" instance=ExtResource("6_s7sfd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.145, 0.6, 8.285)
+
+[node name="ItemProjectileCooldown" parent="Items" instance=ExtResource("7_3qbnh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.7, -9)
+
+[node name="ItemProjectileCooldown2" parent="Items" instance=ExtResource("7_3qbnh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0.7, -9)
+
+[node name="ItemProjectileSize" parent="Items" instance=ExtResource("8_jsjh3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 0.7, 0)
+
+[node name="ItemProjectileSize2" parent="Items" instance=ExtResource("8_jsjh3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0.7, 0)
+
+[node name="ClickManager" parent="." instance=ExtResource("9_12m6k")]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 40, 25)
+
+[connection signal="tree_exiting" from="Player" to="Settings/GameHandler" method="_on_player_tree_exiting"]

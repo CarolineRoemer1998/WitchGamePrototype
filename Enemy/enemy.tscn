@@ -1,0 +1,53 @@
+[gd_scene load_steps=11 format=3 uid="uid://drl04tohdma0v"]
+
+[ext_resource type="Script" path="res://Enemy/enemy.gd" id="1_hpo51"]
+[ext_resource type="PackedScene" uid="uid://de7qa7h6f2nbp" path="res://Enemy/Components/enemy_health.tscn" id="4_ap2bc"]
+[ext_resource type="PackedScene" uid="uid://bqumlnt1nj0nr" path="res://Enemy/Components/enemy_attack.tscn" id="4_ipth6"]
+[ext_resource type="PackedScene" uid="uid://b8u5vgpjkt2wj" path="res://Attacks/projectile_4_ways.tscn" id="5_cwdhf"]
+[ext_resource type="PackedScene" uid="uid://kiwc4v3xkajw" path="res://Enemy/Components/health_bar_enemy.tscn" id="5_fx15q"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ooc43"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tbiha"]
+albedo_color = Color(0.776471, 0.427451, 0.0196078, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_8hv02"]
+material = SubResource("StandardMaterial3D_tbiha")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rwul0"]
+albedo_color = Color(0.8, 0.278431, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_oac5q"]
+
+[node name="Enemy" type="CharacterBody3D" groups=["clickable", "enemy"]]
+collision_layer = 4
+collision_mask = 29
+script = ExtResource("1_hpo51")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_ooc43")
+
+[node name="Pivot" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pivot"]
+mesh = SubResource("CapsuleMesh_8hv02")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Pivot"]
+transform = Transform3D(0.7, 0, 0, 0, 0.3, 0, 0, 0, 0.5, 0, 0.4, 0.3)
+material_override = SubResource("StandardMaterial3D_rwul0")
+mesh = SubResource("BoxMesh_oac5q")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="EnemyAttack" parent="." instance=ExtResource("4_ipth6")]
+strength = 30
+cool_down = 2.5
+projectile = ExtResource("5_cwdhf")
+projectile_speed = 15
+projectile_size = 3.0
+
+[node name="EnemyHealth" parent="." instance=ExtResource("4_ap2bc")]
+
+[node name="HealthBarEnemy" parent="." node_paths=PackedStringArray("enemy") instance=ExtResource("5_fx15q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
+enemy = NodePath("..")

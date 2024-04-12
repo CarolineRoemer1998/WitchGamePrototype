@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://d1r5lve8ox5lo"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2eu5f"]
+transparency = 1
+albedo_color = Color(1, 1, 0.172549, 0.392157)
+emission_enabled = true
+emission = Color(1, 0.34902, 0.286275, 1)
+emission_energy_multiplier = 2.0
+
+[sub_resource type="Curve" id="Curve_6qhbh"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.340426, 1), 0.0, 0.0, 0, 0, Vector2(0.75076, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_ifdt7"]
+curve = SubResource("Curve_6qhbh")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_waelb"]
+direction = Vector3(1, 6.82, 0)
+spread = 100.05
+flatness = 0.35
+gravity = Vector3(0, -0.5, 0)
+initial_velocity_max = 3.0
+damping_max = 1.0
+scale_min = 0.01
+scale_max = 0.2
+scale_curve = SubResource("CurveTexture_ifdt7")
+
+[sub_resource type="SphereMesh" id="SphereMesh_sfexi"]
+
+[node name="MagicalBubbles" type="Node3D"]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+material_override = SubResource("StandardMaterial3D_2eu5f")
+amount = 16
+lifetime = 3.0
+speed_scale = 0.5
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_waelb")
+draw_pass_1 = SubResource("SphereMesh_sfexi")

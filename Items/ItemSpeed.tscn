@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://janmiwhmnrvb"]
+
+[ext_resource type="PackedScene" uid="uid://ditkso8gfscxs" path="res://Items/Components/speed_component.tscn" id="1_ff5ls"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8i0rs"]
+albedo_color = Color(1, 0.815686, 0, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_eeoff"]
+left_to_right = 0.0
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_1toj3"]
+data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
+[node name="ItemSpeed" type="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+collision_layer = 2
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_8i0rs")
+mesh = SubResource("PrismMesh_eeoff")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConcavePolygonShape3D_1toj3")
+
+[node name="SpeedComponent" parent="." instance=ExtResource("1_ff5ls")]
+speed_boost = 30.0
+
+[connection signal="body_entered" from="." to="SpeedComponent" method="_on_item_speed_body_entered"]

@@ -1,0 +1,282 @@
+[gd_scene load_steps=21 format=3 uid="uid://bpxxhtfbucivk"]
+
+[ext_resource type="Script" path="res://Player/player.gd" id="1_0avnk"]
+[ext_resource type="PackedScene" uid="uid://bl17hsyrnpikx" path="res://Player/Components/health_component.tscn" id="2_k3wr6"]
+[ext_resource type="PackedScene" uid="uid://dxehi8jgwk5p4" path="res://Game Behaviour/Scenes/click_manager.tscn" id="2_xvt0o"]
+[ext_resource type="PackedScene" uid="uid://cufa0xtshck13" path="res://Player/Components/attack_component.tscn" id="3_qmocn"]
+[ext_resource type="PackedScene" uid="uid://h8lclvupdkv4" path="res://Attacks/projectile.tscn" id="4_xygqa"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_oqliy"]
+height = 1.8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jeyw3"]
+albedo_color = Color(0.839216, 0.34902, 1, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_foo1e"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oy7nt"]
+albedo_color = Color(0.611765, 0, 0.721569, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ymgsi"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1v0xt"]
+albedo_color = Color(0.839216, 0, 0, 1)
+emission = Color(1, 0, 0, 1)
+emission_energy_multiplier = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8nwg8"]
+albedo_color = Color(0.611765, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_bf525"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot/Meshes:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivot/Meshes:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pivot/Meshes/DamageHighlight:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_0wq52"]
+resource_name = "idle"
+length = 2.0
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot/Meshes:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.0872665, 4.45783e-16, 4.47036e-08), Vector3(0, 0, -0.0872665), Vector3(-0.0872665, 0, 0), Vector3(0, 0, 0.0872665), Vector3(-0.0872665, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_w35xx"]
+resource_name = "run"
+length = 0.3
+loop_mode = 1
+step = 0.025
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot/Meshes:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.075, 0.15, 0.225, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.5, 0), Vector3(0, -5.96046e-08, 0), Vector3(0, 0.5, 0), Vector3(0, -1.19209e-07, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivot/Meshes:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.075, 0.15, 0.225, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.261799, 0, 0.174533), Vector3(-0.261799, 6.57685e-22, -4.47035e-08), Vector3(-0.261799, 0, -0.174533), Vector3(-0.261799, 6.89632e-16, 1.49012e-08), Vector3(-0.261799, 0, 0.174533)]
+}
+
+[sub_resource type="Animation" id="Animation_54xdd"]
+resource_name = "walk"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot/Meshes:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0.261799), Vector3(0, 0, 2.98023e-08), Vector3(0, 0, -0.261799), Vector3(0, 0, 2.98023e-08), Vector3(0, 0, 0.261799)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivot/Meshes:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.5, 0), Vector3(0, 0, 0), Vector3(0, 0.5, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o2msc"]
+_data = {
+"RESET": SubResource("Animation_bf525"),
+"idle": SubResource("Animation_0wq52"),
+"run": SubResource("Animation_w35xx"),
+"walk": SubResource("Animation_54xdd")
+}
+
+[sub_resource type="Animation" id="Animation_58nwd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot/Meshes/DamageHighlight:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_w2dae"]
+resource_name = "TakeDamage"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot/Meshes/DamageHighlight:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g57aj"]
+_data = {
+"RESET": SubResource("Animation_58nwd"),
+"TakeDamage": SubResource("Animation_w2dae")
+}
+
+[node name="Player" type="CharacterBody3D"]
+collision_mask = 62
+script = ExtResource("1_0avnk")
+click_manager = ExtResource("2_xvt0o")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." groups=["player"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_oqliy")
+
+[node name="Pivot" type="Node3D" parent="." groups=["pivot"]]
+
+[node name="Meshes" type="Node3D" parent="Pivot"]
+transform = Transform3D(0.999997, 0, 0, 0, 0.999997, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pivot/Meshes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+material_override = SubResource("StandardMaterial3D_jeyw3")
+mesh = SubResource("CapsuleMesh_foo1e")
+skeleton = NodePath("../../../CollisionShape3D")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Pivot/Meshes"]
+transform = Transform3D(0.7, 0, 0, 1.49012e-08, 0.3, 0, 0, 0, 0.6, -2.98023e-08, 1.4, -0.3)
+material_override = SubResource("StandardMaterial3D_oy7nt")
+mesh = SubResource("BoxMesh_ymgsi")
+skeleton = NodePath("../MeshInstance3D")
+
+[node name="DamageHighlight" type="Node3D" parent="Pivot/Meshes"]
+visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pivot/Meshes/DamageHighlight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+material_override = SubResource("StandardMaterial3D_1v0xt")
+mesh = SubResource("CapsuleMesh_foo1e")
+skeleton = NodePath("../../../../CollisionShape3D")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Pivot/Meshes/DamageHighlight"]
+transform = Transform3D(0.7, 0, 0, 1.49012e-08, 0.3, 0, 0, 0, 0.6, -2.98023e-08, 1.4, -0.3)
+material_override = SubResource("StandardMaterial3D_8nwg8")
+mesh = SubResource("BoxMesh_ymgsi")
+skeleton = NodePath("../MeshInstance3D")
+
+[node name="HealthComponent" parent="." instance=ExtResource("2_k3wr6")]
+
+[node name="AttackComponent" parent="." instance=ExtResource("3_qmocn")]
+projectile = ExtResource("4_xygqa")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_o2msc")
+}
+
+[node name="AnimationPlayerDamage" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_g57aj")
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0, 0, 0.196078)
+
+[connection signal="tree_exited" from="HealthComponent" to="." method="_on_health_component_tree_exited"]

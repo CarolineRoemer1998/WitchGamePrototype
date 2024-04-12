@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://dv7dc6fau261h"]
+
+[ext_resource type="PackedScene" uid="uid://p380fhcf0cjw" path="res://Spawners/Room Spawners/room_spawner_top.tscn" id="1_fp4ba"]
+[ext_resource type="PackedScene" uid="uid://dmcfuuemvpulv" path="res://Spawners/Room Spawners/room_spawner_left.tscn" id="2_llwjd"]
+[ext_resource type="PackedScene" uid="uid://bpuxu3joq57pu" path="res://Spawners/Room Spawners/room_spawner_right.tscn" id="3_dos1c"]
+[ext_resource type="PackedScene" uid="uid://cpe75piq1yo0n" path="res://Spawners/Room Spawners/room_spawner_bottom.tscn" id="4_1ti4q"]
+
+[node name="RoomSpawners" type="Node3D"]
+
+[node name="RoomSpawnerTop" parent="." instance=ExtResource("1_fp4ba")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, -9.5)
+
+[node name="RoomSpawnerLeft" parent="." instance=ExtResource("2_llwjd")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -16.5, 0.1, 0)
+
+[node name="RoomSpawnerBottom" parent="." instance=ExtResource("4_1ti4q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 9.5)
+
+[node name="RoomSpawnerRight" parent="." instance=ExtResource("3_dos1c")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 16.5, 0.1, 0)

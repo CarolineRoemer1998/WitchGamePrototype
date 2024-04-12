@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://p380fhcf0cjw"]
+
+[ext_resource type="PackedScene" uid="uid://r2rfn4ebfcdf" path="res://Spawners/Room Spawners/room_spawner.tscn" id="1_x15o3"]
+
+[node name="RoomSpawnerTop" instance=ExtResource("1_x15o3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, -9.3)
+
+[node name="RoomSpawn" type="Node3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, -8.5)

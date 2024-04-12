@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cixsywt18nmpr"]
+
+[ext_resource type="Script" path="res://Items/Scripts/ProjectileCooldownComponent.gd" id="1_gbmg8"]
+
+[node name="ProjectileCooldownComponent" type="Node3D"]
+script = ExtResource("1_gbmg8")

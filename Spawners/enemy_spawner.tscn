@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://og2eqnvvmr2g"]
+
+[ext_resource type="Script" path="res://Spawners/Scripts/spawner.gd" id="1_a045p"]
+[ext_resource type="Material" uid="uid://dqfn32dr66tqb" path="res://Colors/enemy_placeholder.tres" id="1_lmipm"]
+[ext_resource type="PackedScene" uid="uid://crn5pndv6r2tj" path="res://Enemy/enemy_fast.tscn" id="2_2dhhv"]
+[ext_resource type="PackedScene" uid="uid://cqhe5nvkpcojw" path="res://Enemy/enemy_slow.tscn" id="3_ietgc"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_xlau1"]
+size = Vector3(1, 0.1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_obi4w"]
+size = Vector3(0.1, 0.1, 1)
+
+[node name="EnemySpawner" type="Node3D"]
+script = ExtResource("1_a045p")
+instances = Array[PackedScene]([ExtResource("2_2dhhv"), ExtResource("3_ietgc")])
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0)
+material_override = ExtResource("1_lmipm")
+mesh = SubResource("BoxMesh_xlau1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.45, 0.1, 0)
+material_override = ExtResource("1_lmipm")
+mesh = SubResource("BoxMesh_obi4w")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.45, 0.1, 0)
+material_override = ExtResource("1_lmipm")
+mesh = SubResource("BoxMesh_obi4w")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0.1, -0.45)
+material_override = ExtResource("1_lmipm")
+mesh = SubResource("BoxMesh_obi4w")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0.1, 0.45)
+material_override = ExtResource("1_lmipm")
+mesh = SubResource("BoxMesh_obi4w")

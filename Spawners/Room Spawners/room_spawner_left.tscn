@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dmcfuuemvpulv"]
+
+[ext_resource type="PackedScene" uid="uid://r2rfn4ebfcdf" path="res://Spawners/Room Spawners/room_spawner.tscn" id="1_25qu1"]
+
+[node name="RoomSpawnerLeft" instance=ExtResource("1_25qu1")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -16.3, 0.1, 0)
+
+[node name="RoomSpawn" type="Node3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, -15.5)

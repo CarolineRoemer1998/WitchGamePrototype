@@ -1,0 +1,54 @@
+[gd_scene load_steps=8 format=3 uid="uid://dg5ajsfko6xvm"]
+
+[ext_resource type="PackedScene" uid="uid://bpxxhtfbucivk" path="res://Player/player.tscn" id="1_oxeqq"]
+[ext_resource type="Material" uid="uid://bpqw2klv8hgco" path="res://Colors/grass.tres" id="2_75g6e"]
+[ext_resource type="PackedScene" uid="uid://drl04tohdma0v" path="res://Enemy/enemy.tscn" id="3_r5kio"]
+[ext_resource type="PackedScene" uid="uid://2vh5on6p5gqs" path="res://Components/game_handler.tscn" id="4_b6ohd"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jh72d"]
+sky_top_color = Color(0.513726, 0.960784, 0.968627, 1)
+sky_horizon_color = Color(0.673529, 0.802941, 0.772549, 1)
+ground_bottom_color = Color(0.180392, 0.25098, 0.121569, 1)
+ground_horizon_color = Color(0.673529, 0.802941, 0.772549, 1)
+
+[sub_resource type="Sky" id="Sky_cqsja"]
+sky_material = SubResource("ProceduralSkyMaterial_jh72d")
+
+[sub_resource type="Environment" id="Environment_eektk"]
+background_mode = 2
+sky = SubResource("Sky_cqsja")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="Level1" type="Node3D"]
+
+[node name="Settings" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Settings"]
+environment = SubResource("Environment_eektk")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Settings"]
+transform = Transform3D(1, -1.51421e-07, 8.74228e-08, 0, 0.5, 0.866025, -1.74846e-07, -0.866025, 0.5, 0, 0, 0)
+light_color = Color(1, 0.956863, 0.721569, 1)
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="Settings"]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 25, 15)
+fov = 30.0
+
+[node name="GameHandler" parent="Settings" instance=ExtResource("4_b6ohd")]
+
+[node name="Player" parent="." instance=ExtResource("1_oxeqq")]
+
+[node name="Enemy" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_r5kio")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1, 3)
+player = NodePath("../Player")
+aggro_range = null
+
+[node name="World" type="Node3D" parent="."]
+
+[node name="Ground" type="CSGBox3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+material_override = ExtResource("2_75g6e")
+use_collision = true
+size = Vector3(25, 1, 15)

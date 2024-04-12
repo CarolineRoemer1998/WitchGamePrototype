@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://kiwc4v3xkajw"]
+
+[ext_resource type="Script" path="res://Enemy/Components/health_bar_enemy.gd" id="1_dyxvc"]
+
+[node name="HealthBarEnemy" type="Node3D"]
+script = ExtResource("1_dyxvc")
+
+[node name="LabelHealth" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0)
+billboard = 1
+text = "Test"
+font_size = 200
+outline_size = 50

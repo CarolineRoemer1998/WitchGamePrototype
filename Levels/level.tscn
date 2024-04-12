@@ -1,0 +1,71 @@
+[gd_scene load_steps=10 format=3 uid="uid://cfottj33t7brn"]
+
+[ext_resource type="PackedScene" uid="uid://2vh5on6p5gqs" path="res://Game Behaviour/Scenes/game_handler.tscn" id="1_6a06j"]
+[ext_resource type="PackedScene" uid="uid://bpxxhtfbucivk" path="res://Player/player.tscn" id="2_8wp4o"]
+[ext_resource type="PackedScene" uid="uid://cqgi0itarh7rl" path="res://Levels/Rooms/room.tscn" id="3_sntag"]
+[ext_resource type="Script" path="res://Levels/game_camera.gd" id="5_cb1ts"]
+[ext_resource type="PackedScene" uid="uid://dv7dc6fau261h" path="res://Spawners/Room Spawners/room_spawners.tscn" id="5_e5kp1"]
+[ext_resource type="PackedScene" uid="uid://nhwcrirmgdja" path="res://UI/health_bar.tscn" id="6_2inwf"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_c4qmn"]
+sky_top_color = Color(0.513726, 0.960784, 0.968627, 1)
+sky_horizon_color = Color(0.673529, 0.802941, 0.772549, 1)
+ground_bottom_color = Color(0.180392, 0.25098, 0.121569, 1)
+ground_horizon_color = Color(0.673529, 0.802941, 0.772549, 1)
+
+[sub_resource type="Sky" id="Sky_7uu8r"]
+sky_material = SubResource("ProceduralSkyMaterial_c4qmn")
+
+[sub_resource type="Environment" id="Environment_j1efq"]
+background_mode = 1
+background_color = Color(0.0313726, 0.0901961, 0.027451, 1)
+sky = SubResource("Sky_7uu8r")
+glow_enabled = true
+
+[node name="Level" type="Node3D"]
+
+[node name="Settings" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Settings"]
+environment = SubResource("Environment_j1efq")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Settings"]
+transform = Transform3D(0.866025, 0.433013, -0.25, 0, 0.5, 0.866025, 0.5, -0.75, 0.433012, 0, 0, 0)
+light_color = Color(1, 0.34902, 0.898039, 1)
+light_energy = 4.0
+shadow_enabled = true
+shadow_opacity = 0.5
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="Settings"]
+transform = Transform3D(0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, -0.75, 0.433012, 0, 0, 0)
+light_color = Color(0.00392157, 0.576471, 0, 1)
+light_energy = 2.0
+shadow_enabled = true
+shadow_opacity = 0.5
+
+[node name="GameHandler" parent="Settings" instance=ExtResource("1_6a06j")]
+
+[node name="Player" parent="." instance=ExtResource("2_8wp4o")]
+
+[node name="Rooms" type="Node3D" parent="."]
+
+[node name="Room" parent="Rooms" groups=["active"] instance=ExtResource("3_sntag")]
+
+[node name="RoomSpawners" parent="Rooms" groups=["room_spawners"] instance=ExtResource("5_e5kp1")]
+
+[node name="GameCamera" type="Camera3D" parent="Rooms" groups=["camera"]]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 35, 20)
+top_level = true
+current = true
+fov = 27.0
+script = ExtResource("5_cb1ts")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 53.32, 0)
+
+[node name="HealthBar" parent="." node_paths=PackedStringArray("player") instance=ExtResource("6_2inwf")]
+player = NodePath("../Player")
+
+[editable path="Player"]
+[editable path="Rooms/Room"]
+[editable path="Rooms/RoomSpawners"]

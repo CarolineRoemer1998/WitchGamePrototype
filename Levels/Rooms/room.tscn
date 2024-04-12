@@ -1,0 +1,134 @@
+[gd_scene load_steps=6 format=3 uid="uid://cqgi0itarh7rl"]
+
+[ext_resource type="Material" uid="uid://bpqw2klv8hgco" path="res://Colors/grass.tres" id="1_nhwcb"]
+[ext_resource type="PackedScene" uid="uid://og2eqnvvmr2g" path="res://Spawners/enemy_spawner.tscn" id="2_4wg51"]
+[ext_resource type="PackedScene" uid="uid://vy3x5xp7omrd" path="res://Spawners/item_spawner.tscn" id="3_gfram"]
+[ext_resource type="PackedScene" uid="uid://d1r5lve8ox5lo" path="res://World Design/Particles/magical_bubbles.tscn" id="4_dpk6o"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_eerhh"]
+vertices = PackedVector3Array(-16.04, 5.25, -9.035, -16.04, 5.25, -1.785, -15.54, 5.25, -8.785, -1.04, 0.5, 7.965, -0.790001, 0.5, 8.965, 0.959999, 0.5, 8.965, 1.21, 0.5, 7.965, 1.21, 0.5, -7.785, -1.04, 0.5, -7.785, -2.79, 0.5, -7.785, -2.79, 0.5, 7.965, -1.04, 0.5, 7.965, -1.04, 0.5, -7.785, 1.21, 0.5, -7.785, 0.959999, 0.5, -9.035, -0.790001, 0.5, -9.035, -1.04, 0.5, -7.785, 1.21, 0.5, 7.965, 2.96, 0.5, 7.965, 2.96, 0.5, -7.785, 1.21, 0.5, -7.785, 8.96, 5.25, -9.035, 1.96, 5.25, -9.035, 8.96, 5.25, -8.785, 8.96, 5.25, -8.785, 15.96, 5.25, -8.535, 15.96, 5.25, -9.035, 8.96, 5.25, -9.035, -14.79, 0.5, -1.035, -16.04, 0.5, -0.785, -16.04, 0.5, 0.965, -14.79, 0.5, 1.215, -2.79, 0.5, 7.965, -2.79, 0.5, -7.785, -14.79, 0.5, -1.035, -14.79, 0.5, 1.215, -2.79, 0.5, -7.785, -14.79, 0.5, -7.785, -14.79, 0.5, -1.035, -14.79, 0.5, 1.215, -14.79, 0.5, 7.965, -2.79, 0.5, 7.965, 14.96, 0.5, 1.215, 15.96, 0.5, 0.965, 15.96, 0.5, -0.785, 14.96, 0.5, -1.035, 2.96, 0.5, 7.965, 14.96, 0.5, 1.215, 14.96, 0.5, -1.035, 2.96, 0.5, -7.785, 2.96, 0.5, 7.965, 14.96, 0.5, 7.965, 14.96, 0.5, 1.215, 14.96, 0.5, -1.035, 14.96, 0.5, -7.785, 2.96, 0.5, -7.785, -16.04, 5.25, 1.965, -16.04, 5.25, 8.965, -15.54, 5.25, 8.965)
+polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(4, 3, 5), PackedInt32Array(5, 3, 6), PackedInt32Array(6, 3, 8), PackedInt32Array(6, 8, 7), PackedInt32Array(12, 11, 9), PackedInt32Array(9, 11, 10), PackedInt32Array(14, 13, 15), PackedInt32Array(15, 13, 16), PackedInt32Array(20, 19, 17), PackedInt32Array(17, 19, 18), PackedInt32Array(23, 22, 21), PackedInt32Array(27, 26, 24), PackedInt32Array(24, 26, 25), PackedInt32Array(29, 28, 30), PackedInt32Array(30, 28, 31), PackedInt32Array(35, 34, 32), PackedInt32Array(32, 34, 33), PackedInt32Array(38, 37, 36), PackedInt32Array(41, 40, 39), PackedInt32Array(43, 42, 44), PackedInt32Array(44, 42, 45), PackedInt32Array(47, 46, 48), PackedInt32Array(48, 46, 49), PackedInt32Array(52, 51, 50), PackedInt32Array(55, 54, 53), PackedInt32Array(58, 57, 56)]
+
+[node name="Room" type="NavigationRegion3D"]
+navigation_mesh = SubResource("NavigationMesh_eerhh")
+
+[node name="CameraSpot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 35, 20)
+
+[node name="World" type="Node3D" parent="."]
+
+[node name="Ground" type="CSGBox3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+material_override = ExtResource("1_nhwcb")
+use_collision = true
+collision_layer = 16
+size = Vector3(33, 1, 19)
+
+[node name="WallLeft" type="CSGBox3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 2.4, 5.5)
+material_override = ExtResource("1_nhwcb")
+use_collision = true
+collision_layer = 16
+size = Vector3(1, 5, 8)
+
+[node name="WallLeft4" type="CSGBox3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 2.4, -5.5)
+material_override = ExtResource("1_nhwcb")
+use_collision = true
+collision_layer = 16
+size = Vector3(1, 5, 8)
+
+[node name="WallLeft2" type="CSGBox3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 2.4, -5)
+material_override = ExtResource("1_nhwcb")
+use_collision = true
+collision_layer = 16
+size = Vector3(1, 5, 7)
+
+[node name="WallLeft3" type="CSGBox3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 2.4, 5)
+material_override = ExtResource("1_nhwcb")
+use_collision = true
+collision_layer = 16
+size = Vector3(1, 5, 7)
+
+[node name="WallBottom" type="CSGBox3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 2.4, 9)
+material_override = ExtResource("1_nhwcb")
+use_collision = true
+collision_layer = 16
+size = Vector3(14, 5, 1)
+
+[node name="WallBottom4" type="CSGBox3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 2.4, -9)
+material_override = ExtResource("1_nhwcb")
+use_collision = true
+collision_layer = 16
+size = Vector3(14, 5, 1)
+
+[node name="WallBottom2" type="CSGBox3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.96, 2.4, 8.965)
+material_override = ExtResource("1_nhwcb")
+use_collision = true
+collision_layer = 16
+size = Vector3(15, 5, 1)
+
+[node name="WallBottom3" type="CSGBox3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.04, 2.4, -9.035)
+material_override = ExtResource("1_nhwcb")
+use_collision = true
+collision_layer = 16
+size = Vector3(15, 5, 1)
+
+[node name="ItemSpawner" parent="." instance=ExtResource("3_gfram")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -5)
+
+[node name="ItemSpawner2" parent="." instance=ExtResource("3_gfram")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 5)
+
+[node name="EnemySpawner" parent="." instance=ExtResource("2_4wg51")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -5)
+
+[node name="EnemySpawner2" parent="." instance=ExtResource("2_4wg51")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 5)
+
+[node name="Particles" type="Node3D" parent="."]
+
+[node name="MagicalBubbles" parent="Particles" instance=ExtResource("4_dpk6o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -7)
+
+[node name="MagicalBubbles3" parent="Particles" instance=ExtResource("4_dpk6o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -7)
+
+[node name="MagicalBubbles4" parent="Particles" instance=ExtResource("4_dpk6o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)
+
+[node name="MagicalBubbles5" parent="Particles" instance=ExtResource("4_dpk6o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -6)
+
+[node name="MagicalBubbles7" parent="Particles" instance=ExtResource("4_dpk6o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, -7)
+
+[node name="MagicalBubbles8" parent="Particles" instance=ExtResource("4_dpk6o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 0)
+
+[node name="MagicalBubbles10" parent="Particles" instance=ExtResource("4_dpk6o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -1)
+
+[node name="MagicalBubbles11" parent="Particles" instance=ExtResource("4_dpk6o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+
+[node name="MagicalBubbles12" parent="Particles" instance=ExtResource("4_dpk6o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 2)
+
+[node name="MagicalBubbles14" parent="Particles" instance=ExtResource("4_dpk6o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 0)
+
+[node name="MagicalBubbles15" parent="Particles" instance=ExtResource("4_dpk6o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, 7)
+
+[node name="MagicalBubbles16" parent="Particles" instance=ExtResource("4_dpk6o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 7)
+
+[node name="MagicalBubbles17" parent="Particles" instance=ExtResource("4_dpk6o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 7)

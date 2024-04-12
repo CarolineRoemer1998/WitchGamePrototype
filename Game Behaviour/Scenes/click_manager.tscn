@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dxehi8jgwk5p4"]
+
+[ext_resource type="Script" path="res://Game Behaviour/Scripts/click_manager.gd" id="1_bto4i"]
+
+[node name="ClickManager" type="Camera3D" groups=["camera"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+fov = 30.0
+script = ExtResource("1_bto4i")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]

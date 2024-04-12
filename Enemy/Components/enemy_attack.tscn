@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://bqumlnt1nj0nr"]
+
+[ext_resource type="Script" path="res://Enemy/Scripts/EnemyAttack.gd" id="1_rq058"]
+
+[node name="EnemyAttack" type="Node3D"]
+script = ExtResource("1_rq058")
+projectile_speed = 20
+
+[node name="TimerCooldown" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="TimerCooldown" to="." method="_on_timer_cooldown_timeout"]
