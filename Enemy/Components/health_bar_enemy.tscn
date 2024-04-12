@@ -8,6 +8,6 @@ script = ExtResource("1_dyxvc")
 [node name="LabelHealth" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0)
 billboard = 1
-text = "Test"
+text = "HP"
 font_size = 200
 outline_size = 50

@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://og2eqnvvmr2g"]
 
 [ext_resource type="Script" path="res://Spawners/Scripts/spawner.gd" id="1_a045p"]
-[ext_resource type="Material" uid="uid://dqfn32dr66tqb" path="res://Colors/enemy_placeholder.tres" id="1_lmipm"]
+[ext_resource type="Material" uid="uid://dqfn32dr66tqb" path="res://Fundamentals/World Design/Colors/enemy_placeholder.tres" id="1_lmipm"]
 [ext_resource type="PackedScene" uid="uid://crn5pndv6r2tj" path="res://Enemy/enemy_fast.tscn" id="2_2dhhv"]
 [ext_resource type="PackedScene" uid="uid://cqhe5nvkpcojw" path="res://Enemy/enemy_slow.tscn" id="3_ietgc"]
 

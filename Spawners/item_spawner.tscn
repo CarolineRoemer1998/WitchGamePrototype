@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://vy3x5xp7omrd"]
 
-[ext_resource type="Material" uid="uid://jxar0bkf12kv" path="res://Colors/item_spawner.tres" id="1_ih64y"]
+[ext_resource type="Material" uid="uid://jxar0bkf12kv" path="res://Fundamentals/World Design/Colors/item_spawner.tres" id="1_ih64y"]
 [ext_resource type="Script" path="res://Spawners/Scripts/spawner.gd" id="1_os67t"]
 [ext_resource type="PackedScene" uid="uid://bqukwqqitqyb4" path="res://Items/ItemProjectileCooldown.tscn" id="2_j5h1r"]
 [ext_resource type="PackedScene" uid="uid://byhak83hf3fku" path="res://Items/ItemProjectileSize.tscn" id="3_h2308"]

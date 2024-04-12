@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://dg5ajsfko6xvm"]
 
-[ext_resource type="PackedScene" uid="uid://2vh5on6p5gqs" path="res://Game Behaviour/Scenes/game_handler.tscn" id="1_4dbgd"]
+[ext_resource type="PackedScene" uid="uid://2vh5on6p5gqs" path="res://Fundamentals/Game Behaviour/game_handler.tscn" id="1_4dbgd"]
 [ext_resource type="PackedScene" uid="uid://bpxxhtfbucivk" path="res://Player/player.tscn" id="2_ih000"]
 [ext_resource type="PackedScene" uid="uid://drl04tohdma0v" path="res://Enemy/enemy.tscn" id="3_abnnd"]
 [ext_resource type="Material" uid="uid://bpqw2klv8hgco" path="res://Colors/grass.tres" id="4_6glwa"]
@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://janmiwhmnrvb" path="res://Items/ItemSpeed.tscn" id="6_s7sfd"]
 [ext_resource type="PackedScene" uid="uid://bqukwqqitqyb4" path="res://Items/ItemProjectileCooldown.tscn" id="7_3qbnh"]
 [ext_resource type="PackedScene" uid="uid://byhak83hf3fku" path="res://Items/ItemProjectileSize.tscn" id="8_jsjh3"]
-[ext_resource type="PackedScene" uid="uid://dxehi8jgwk5p4" path="res://Game Behaviour/Scenes/click_manager.tscn" id="9_12m6k"]
+[ext_resource type="PackedScene" path="res://Game Behaviour/Scenes/click_manager.tscn" id="9_12m6k"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jh72d"]
 sky_top_color = Color(0.513726, 0.960784, 0.968627, 1)

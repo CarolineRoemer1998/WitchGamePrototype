@@ -6,7 +6,6 @@ class_name Player
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var health_component: Node3D = $HealthComponent
 @onready var attack_component: Node3D = $AttackComponent
-@export var click_manager: PackedScene
 
 var speed_walking = 7.0
 var speed_running = 12.0

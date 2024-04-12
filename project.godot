@@ -13,7 +13,7 @@ config_version=5
 config/name="Top Down RPG"
 run/main_scene="res://Levels/level.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://Fundamentals/World Design/icon.svg"
 
 [debug]
 

@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://cqgi0itarh7rl"]
 
-[ext_resource type="Material" uid="uid://bpqw2klv8hgco" path="res://Colors/grass.tres" id="1_nhwcb"]
+[ext_resource type="Material" uid="uid://bpqw2klv8hgco" path="res://Fundamentals/World Design/Colors/grass.tres" id="1_nhwcb"]
 [ext_resource type="PackedScene" uid="uid://og2eqnvvmr2g" path="res://Spawners/enemy_spawner.tscn" id="2_4wg51"]
 [ext_resource type="PackedScene" uid="uid://vy3x5xp7omrd" path="res://Spawners/item_spawner.tscn" id="3_gfram"]
-[ext_resource type="PackedScene" uid="uid://d1r5lve8ox5lo" path="res://World Design/Particles/magical_bubbles.tscn" id="4_dpk6o"]
+[ext_resource type="PackedScene" uid="uid://d1r5lve8ox5lo" path="res://Fundamentals/World Design/Particles/magical_bubbles.tscn" id="4_dpk6o"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_eerhh"]
 vertices = PackedVector3Array(-16.04, 5.25, -9.035, -16.04, 5.25, -1.785, -15.54, 5.25, -8.785, -1.04, 0.5, 7.965, -0.790001, 0.5, 8.965, 0.959999, 0.5, 8.965, 1.21, 0.5, 7.965, 1.21, 0.5, -7.785, -1.04, 0.5, -7.785, -2.79, 0.5, -7.785, -2.79, 0.5, 7.965, -1.04, 0.5, 7.965, -1.04, 0.5, -7.785, 1.21, 0.5, -7.785, 0.959999, 0.5, -9.035, -0.790001, 0.5, -9.035, -1.04, 0.5, -7.785, 1.21, 0.5, 7.965, 2.96, 0.5, 7.965, 2.96, 0.5, -7.785, 1.21, 0.5, -7.785, 8.96, 5.25, -9.035, 1.96, 5.25, -9.035, 8.96, 5.25, -8.785, 8.96, 5.25, -8.785, 15.96, 5.25, -8.535, 15.96, 5.25, -9.035, 8.96, 5.25, -9.035, -14.79, 0.5, -1.035, -16.04, 0.5, -0.785, -16.04, 0.5, 0.965, -14.79, 0.5, 1.215, -2.79, 0.5, 7.965, -2.79, 0.5, -7.785, -14.79, 0.5, -1.035, -14.79, 0.5, 1.215, -2.79, 0.5, -7.785, -14.79, 0.5, -7.785, -14.79, 0.5, -1.035, -14.79, 0.5, 1.215, -14.79, 0.5, 7.965, -2.79, 0.5, 7.965, 14.96, 0.5, 1.215, 15.96, 0.5, 0.965, 15.96, 0.5, -0.785, 14.96, 0.5, -1.035, 2.96, 0.5, 7.965, 14.96, 0.5, 1.215, 14.96, 0.5, -1.035, 2.96, 0.5, -7.785, 2.96, 0.5, 7.965, 14.96, 0.5, 7.965, 14.96, 0.5, 1.215, 14.96, 0.5, -1.035, 14.96, 0.5, -7.785, 2.96, 0.5, -7.785, -16.04, 5.25, 1.965, -16.04, 5.25, 8.965, -15.54, 5.25, 8.965)
