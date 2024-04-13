@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cqgi0itarh7rl" path="res://Levels/Rooms/room.tscn" id="3_sntag"]
 [ext_resource type="Script" path="res://Levels/Components/game_camera.gd" id="5_cb1ts"]
 [ext_resource type="PackedScene" uid="uid://dv7dc6fau261h" path="res://Spawners/Room Spawners/room_spawners.tscn" id="5_e5kp1"]
-[ext_resource type="PackedScene" uid="uid://nhwcrirmgdja" path="res://UI/health_bar.tscn" id="6_2inwf"]
+[ext_resource type="PackedScene" uid="uid://nhwcrirmgdja" path="res://Fundamentals/UI/health_bar.tscn" id="6_2inwf"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_c4qmn"]
 sky_top_color = Color(0.513726, 0.960784, 0.968627, 1)

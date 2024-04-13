@@ -1,8 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://crn5pndv6r2tj"]
+[gd_scene load_steps=19 format=3 uid="uid://crn5pndv6r2tj"]
 
 [ext_resource type="Script" path="res://Enemy/enemy.gd" id="1_hnx1q"]
 [ext_resource type="PackedScene" uid="uid://bqumlnt1nj0nr" path="res://Enemy/Components/enemy_attack.tscn" id="1_x25b7"]
 [ext_resource type="PackedScene" uid="uid://b8u5vgpjkt2wj" path="res://Attacks/projectile_4_ways.tscn" id="2_2e2ho"]
+[ext_resource type="Script" path="res://Enemy/Components/damage_highlight.gd" id="2_os5ed"]
 [ext_resource type="PackedScene" uid="uid://de7qa7h6f2nbp" path="res://Enemy/Components/enemy_health.tscn" id="3_llrye"]
 [ext_resource type="PackedScene" uid="uid://kiwc4v3xkajw" path="res://Enemy/Components/health_bar_enemy.tscn" id="5_gm6rw"]
 
@@ -18,19 +19,50 @@ albedo_color = Color(0.933333, 0.407843, 0, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_7qfxg"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ibmny"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lnfps"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hbxrj"]
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_kul5h"]
+radius = 0.51
+height = 2.01
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dv3c3"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ibwin"]
+size = Vector3(1.01, 1.01, 1.01)
 
 [sub_resource type="Animation" id="Animation_qyeub"]
-length = 0.001
+length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("DamageHighlight:visible")
+tracks/0/path = NodePath("MeshInstance3D:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -44,10 +76,34 @@ step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("DamageHighlight:visible")
+tracks/0/path = NodePath("MeshInstance3D:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
@@ -70,28 +126,34 @@ SPEED = 5.0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_15oex")
 
-[node name="Pivot" type="Node3D" parent="."]
+[node name="MeshPivot" type="Node3D" parent="."]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Pivot"]
+[node name="MeshInstance3D_Body" type="MeshInstance3D" parent="MeshPivot"]
 material_override = SubResource("StandardMaterial3D_j5tm4")
 mesh = SubResource("CapsuleMesh_ppav8")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Pivot"]
+[node name="MeshInstance3D2_Face" type="MeshInstance3D" parent="MeshPivot"]
 transform = Transform3D(0.7, 0, 0, 0, 0.3, 0, 0, 0, 0.5, 0, 0.4, 0.3)
 material_override = SubResource("StandardMaterial3D_2g8di")
 mesh = SubResource("BoxMesh_7qfxg")
 
 [node name="DamageHighlight" type="Node3D" parent="."]
 visible = false
+script = ExtResource("2_os5ed")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="DamageHighlight"]
-material_override = SubResource("StandardMaterial3D_ibmny")
-mesh = SubResource("CapsuleMesh_ppav8")
+material_override = SubResource("StandardMaterial3D_lnfps")
+mesh = SubResource("CapsuleMesh_kul5h")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="DamageHighlight"]
 transform = Transform3D(0.7, 0, 0, 0, 0.3, 0, 0, 0, 0.5, 0, 0.4, 0.3)
-material_override = SubResource("StandardMaterial3D_hbxrj")
-mesh = SubResource("BoxMesh_7qfxg")
+material_override = SubResource("StandardMaterial3D_dv3c3")
+mesh = SubResource("BoxMesh_ibwin")
+
+[node name="AnimationPlayerDamage" type="AnimationPlayer" parent="DamageHighlight"]
+libraries = {
+"": SubResource("AnimationLibrary_41ngq")
+}
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 
@@ -101,13 +163,19 @@ cool_down = 1.5
 projectile = ExtResource("2_2e2ho")
 projectile_speed = 15
 
-[node name="EnemyHealth" parent="." instance=ExtResource("3_llrye")]
+[node name="EnemyHealth" parent="." node_paths=PackedStringArray("animation_player_damage") instance=ExtResource("3_llrye")]
+animation_player_damage = NodePath("../DamageHighlight/AnimationPlayerDamage")
 max_health = 50
 
 [node name="HealthBarEnemy" parent="." node_paths=PackedStringArray("enemy") instance=ExtResource("5_gm6rw")]
 enemy = NodePath("..")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_41ngq")
-}
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="Mesh" type="MeshInstance3D" parent="Area3D"]
+material_override = SubResource("StandardMaterial3D_j5tm4")
+mesh = SubResource("CapsuleMesh_ppav8")
+skeleton = NodePath("../../MeshPivot")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("CapsuleShape3D_15oex")

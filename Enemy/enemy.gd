@@ -3,7 +3,7 @@ extends CharacterBody3D
 class_name Enemy
 
 @onready var navigation_agent_3d: NavigationAgent3D = $NavigationAgent3D
-@onready var pivot: Node3D = $Pivot
+@onready var pivot: Node3D = $MeshPivot
 @onready var enemy_health: Node3D = $EnemyHealth
 @onready var enemy_attack: Node3D = $EnemyAttack
 

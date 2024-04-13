@@ -13,7 +13,6 @@ func _ready() -> void:
 
 func die():
 	get_tree().reload_current_scene()
-	get_parent().queue_free()
 
 func lose_health(amount):
 	if current_health-amount > 0:

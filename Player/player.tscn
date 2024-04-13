@@ -276,5 +276,3 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 0, 0, 0.196078)
-
-[connection signal="tree_exited" from="HealthComponent" to="." method="_on_health_component_tree_exited"]

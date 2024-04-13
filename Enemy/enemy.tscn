@@ -27,12 +27,12 @@ script = ExtResource("1_hpo51")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_ooc43")
 
-[node name="Pivot" type="Node3D" parent="."]
+[node name="MeshPivot" type="Node3D" parent="."]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Pivot"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshPivot"]
 mesh = SubResource("CapsuleMesh_8hv02")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Pivot"]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshPivot"]
 transform = Transform3D(0.7, 0, 0, 0, 0.3, 0, 0, 0, 0.5, 0, 0.4, 0.3)
 material_override = SubResource("StandardMaterial3D_rwul0")
 mesh = SubResource("BoxMesh_oac5q")

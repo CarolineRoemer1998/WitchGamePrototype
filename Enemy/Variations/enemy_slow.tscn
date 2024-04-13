@@ -1,8 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://cqhe5nvkpcojw"]
+[gd_scene load_steps=19 format=3 uid="uid://cqhe5nvkpcojw"]
 
 [ext_resource type="PackedScene" uid="uid://bqumlnt1nj0nr" path="res://Enemy/Components/enemy_attack.tscn" id="1_4fqg8"]
 [ext_resource type="Script" path="res://Enemy/enemy.gd" id="1_dqol7"]
 [ext_resource type="PackedScene" uid="uid://b8u5vgpjkt2wj" path="res://Attacks/projectile_4_ways.tscn" id="2_266i3"]
+[ext_resource type="Script" path="res://Enemy/Components/damage_highlight.gd" id="2_qrebf"]
 [ext_resource type="PackedScene" uid="uid://de7qa7h6f2nbp" path="res://Enemy/Components/enemy_health.tscn" id="3_vjwsl"]
 [ext_resource type="PackedScene" uid="uid://kiwc4v3xkajw" path="res://Enemy/Components/health_bar_enemy.tscn" id="5_gufus"]
 
@@ -18,19 +19,50 @@ albedo_color = Color(0.027451, 0, 0.521569, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_sxfvf"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lnfps"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qed1h"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vxmpt"]
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_je0ie"]
+radius = 0.51
+height = 2.01
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dv3c3"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ibwin"]
+size = Vector3(1.01, 1.01, 1.01)
 
 [sub_resource type="Animation" id="Animation_qyeub"]
-length = 0.001
+length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("DamageHighlight:visible")
+tracks/0/path = NodePath("MeshInstance3D:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -44,10 +76,34 @@ step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("DamageHighlight:visible")
+tracks/0/path = NodePath("MeshInstance3D:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
@@ -69,28 +125,34 @@ script = ExtResource("1_dqol7")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_1g6k6")
 
-[node name="Pivot" type="Node3D" parent="."]
+[node name="MeshPivot" type="Node3D" parent="."]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Pivot"]
+[node name="MeshInstance3D_Body" type="MeshInstance3D" parent="MeshPivot"]
 material_override = SubResource("StandardMaterial3D_4b2rv")
 mesh = SubResource("CapsuleMesh_kul5h")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Pivot"]
+[node name="MeshInstance3D_Face" type="MeshInstance3D" parent="MeshPivot"]
 transform = Transform3D(0.7, 0, 0, 0, 0.3, 0, 0, 0, 0.5, 0, 0.4, 0.3)
 material_override = SubResource("StandardMaterial3D_ugq0p")
 mesh = SubResource("BoxMesh_sxfvf")
 
 [node name="DamageHighlight" type="Node3D" parent="."]
 visible = false
+script = ExtResource("2_qrebf")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="DamageHighlight"]
-material_override = SubResource("StandardMaterial3D_lnfps")
-mesh = SubResource("CapsuleMesh_kul5h")
+material_override = SubResource("StandardMaterial3D_qed1h")
+mesh = SubResource("CapsuleMesh_je0ie")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="DamageHighlight"]
 transform = Transform3D(0.7, 0, 0, 0, 0.3, 0, 0, 0, 0.5, 0, 0.4, 0.3)
-material_override = SubResource("StandardMaterial3D_vxmpt")
-mesh = SubResource("BoxMesh_sxfvf")
+material_override = SubResource("StandardMaterial3D_dv3c3")
+mesh = SubResource("BoxMesh_ibwin")
+
+[node name="AnimationPlayerDamage" type="AnimationPlayer" parent="DamageHighlight"]
+libraries = {
+"": SubResource("AnimationLibrary_41ngq")
+}
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 
@@ -101,12 +163,8 @@ projectile = ExtResource("2_266i3")
 projectile_speed = 10
 projectile_size = 3.0
 
-[node name="EnemyHealth" parent="." instance=ExtResource("3_vjwsl")]
+[node name="EnemyHealth" parent="." node_paths=PackedStringArray("animation_player_damage") instance=ExtResource("3_vjwsl")]
+animation_player_damage = NodePath("../DamageHighlight/AnimationPlayerDamage")
 
 [node name="HealthBarEnemy" parent="." node_paths=PackedStringArray("enemy") instance=ExtResource("5_gufus")]
 enemy = NodePath("..")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_41ngq")
-}

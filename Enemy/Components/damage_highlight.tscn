@@ -1,0 +1,117 @@
+[gd_scene load_steps=9 format=3 uid="uid://bhcjtfn1cqle0"]
+
+[ext_resource type="Script" path="res://Enemy/Components/damage_highlight.gd" id="1_8gxn0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lnfps"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_kul5h"]
+radius = 0.51
+height = 2.01
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dv3c3"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ibwin"]
+size = Vector3(1.01, 1.01, 1.01)
+
+[sub_resource type="Animation" id="Animation_qyeub"]
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_evw0q"]
+resource_name = "TakeDamage"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_41ngq"]
+_data = {
+"RESET": SubResource("Animation_qyeub"),
+"TakeDamage": SubResource("Animation_evw0q")
+}
+
+[node name="DamageHighlight" type="Node3D"]
+script = ExtResource("1_8gxn0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_lnfps")
+mesh = SubResource("CapsuleMesh_kul5h")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.7, 0, 0, 0, 0.3, 0, 0, 0, 0.5, 0, 0.4, 0.3)
+material_override = SubResource("StandardMaterial3D_dv3c3")
+mesh = SubResource("BoxMesh_ibwin")
+
+[node name="AnimationPlayerDamage" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_41ngq")
+}
