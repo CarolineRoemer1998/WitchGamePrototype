@@ -19,6 +19,10 @@ config/icon="res://Fundamentals/World Design/icon.svg"
 
 gdscript/layer_5="Floor"
 
+[display]
+
+window/size/mode=2
+
 [input]
 
 left={

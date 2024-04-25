@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://cfottj33t7brn"]
+[gd_scene load_steps=11 format=3 uid="uid://cfottj33t7brn"]
 
 [ext_resource type="PackedScene" uid="uid://2vh5on6p5gqs" path="res://Fundamentals/Game Behaviour/game_handler.tscn" id="1_6a06j"]
 [ext_resource type="PackedScene" uid="uid://bpxxhtfbucivk" path="res://Player/player.tscn" id="2_8wp4o"]
+[ext_resource type="PackedScene" uid="uid://4igys64c0trc" path="res://Fundamentals/World Design/Light/normal_lighting.tscn" id="2_iqf64"]
 [ext_resource type="PackedScene" uid="uid://cqgi0itarh7rl" path="res://Levels/Rooms/room.tscn" id="3_sntag"]
 [ext_resource type="Script" path="res://Levels/Components/game_camera.gd" id="5_cb1ts"]
 [ext_resource type="PackedScene" uid="uid://dv7dc6fau261h" path="res://Spawners/Room Spawners/room_spawners.tscn" id="5_e5kp1"]
@@ -29,21 +30,15 @@ glow_enabled = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Settings"]
 environment = SubResource("Environment_j1efq")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Settings"]
-transform = Transform3D(0.866025, 0.433013, -0.25, 0, 0.5, 0.866025, 0.5, -0.75, 0.433012, 0, 0, 0)
-light_color = Color(1, 0.34902, 0.898039, 1)
-light_energy = 4.0
-shadow_enabled = true
-shadow_opacity = 0.5
-
-[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="Settings"]
-transform = Transform3D(0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, -0.75, 0.433012, 0, 0, 0)
-light_color = Color(0.00392157, 0.576471, 0, 1)
-light_energy = 2.0
-shadow_enabled = true
-shadow_opacity = 0.5
-
 [node name="GameHandler" parent="Settings" instance=ExtResource("1_6a06j")]
+
+[node name="Lighting" parent="Settings" instance=ExtResource("2_iqf64")]
+
+[node name="Purple" parent="Settings/Lighting" index="0"]
+light_color = Color(1, 0.403922, 0.752941, 1)
+
+[node name="Green" parent="Settings/Lighting" index="1"]
+light_color = Color(0.341176, 0.541176, 0, 1)
 
 [node name="Player" parent="." instance=ExtResource("2_8wp4o")]
 
@@ -66,6 +61,7 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 53.
 [node name="HealthBar" parent="." node_paths=PackedStringArray("player") instance=ExtResource("6_2inwf")]
 player = NodePath("../Player")
 
+[editable path="Settings/Lighting"]
 [editable path="Player"]
 [editable path="Rooms/Room"]
 [editable path="Rooms/RoomSpawners"]

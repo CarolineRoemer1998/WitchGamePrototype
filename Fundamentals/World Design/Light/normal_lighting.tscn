@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://4igys64c0trc"]
+
+[node name="Lighting" type="Node3D"]
+
+[node name="Purple" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.866025, 0.433013, -0.25, 0, 0.5, 0.866025, 0.5, -0.75, 0.433012, 0, 0, 0)
+light_color = Color(1, 0.329412, 0.933333, 1)
+light_energy = 4.0
+shadow_enabled = true
+shadow_opacity = 0.5
+
+[node name="Green" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, -0.75, 0.433012, 0, 0, 0)
+light_color = Color(0.00392157, 0.576471, 0, 1)
+light_energy = 2.0
+shadow_enabled = true
+shadow_opacity = 0.5

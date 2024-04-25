@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://kk5te5k8xjie"]
+
+[ext_resource type="PackedScene" uid="uid://c4uoorv3msuhc" path="res://Environment/Bush/Assets/Bush.blend" id="1_ped7r"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_id5rj"]
+size = Vector3(2, 2, 2)
+
+[node name="Bush" type="StaticBody3D"]
+collision_layer = 8
+collision_mask = 5
+
+[node name="Bush" parent="." instance=ExtResource("1_ped7r")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_id5rj")
+
+[editable path="Bush"]
