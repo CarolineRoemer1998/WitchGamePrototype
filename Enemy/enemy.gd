@@ -32,7 +32,7 @@ func _physics_process(delta: float) -> void:
 		is_triggered = true
 		enemy_attack.is_triggered = true
 		
-	if is_triggered:
+	if is_triggered and player_distance >= 2.0:
 		move_and_slide()
 		handle_movement(direction)
 		

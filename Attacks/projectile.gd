@@ -1,5 +1,7 @@
 extends Area3D
 
+class_name Projectile
+
 var direction : Vector3 = Vector3.FORWARD
 var speed : float = 15
 
@@ -14,4 +16,5 @@ func _on_timer_despawn_timeout() -> void:
 func _on_body_entered(body: Node3D) -> void:
 	if body is Enemy:
 		body.enemy_health.lose_health(get_parent().strength)
+	if not body is Player:
 		queue_free()

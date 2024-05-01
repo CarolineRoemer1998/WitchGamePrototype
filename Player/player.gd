@@ -6,6 +6,7 @@ class_name Player
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var health_component: Node3D = $HealthComponent
 @onready var attack_component: Node3D = $AttackComponent
+@onready var block_component: Area3D = $Pivot/BlockComponent
 
 var speed_walking = 7.0
 var speed_running = 12.0
@@ -25,6 +26,7 @@ func _physics_process(delta: float) -> void:
 		var input_dir := Input.get_vector("left", "right", "up", "down")
 		add_gravity(delta)
 		handle_jump()
+		handle_block()
 		handle_movement(input_dir)
 		rotate_and_move(input_dir)
 		handle_animations()
@@ -48,6 +50,17 @@ func handle_jump():
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = sqrt(jump_height*2.0*gravity)
 
+func handle_block():
+	if Input.is_action_just_pressed("block"):
+		block_component.visible = true
+		for child in block_component.get_children():
+			if child is CollisionShape3D:
+				child.disabled = false
+	elif Input.is_action_just_released("block"):
+		block_component.visible = false
+		for child in block_component.get_children():
+			if child is CollisionShape3D:
+				child.disabled = true
 
 func handle_movement(input_dir):
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()

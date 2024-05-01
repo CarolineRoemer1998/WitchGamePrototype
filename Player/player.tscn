@@ -1,6 +1,7 @@
-[gd_scene load_steps=20 format=3 uid="uid://bpxxhtfbucivk"]
+[gd_scene load_steps=21 format=3 uid="uid://bpxxhtfbucivk"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_0avnk"]
+[ext_resource type="PackedScene" uid="uid://cu2nrjpbopxob" path="res://Player/Components/block_component.tscn" id="2_dmokx"]
 [ext_resource type="PackedScene" uid="uid://bl17hsyrnpikx" path="res://Player/Components/health_component.tscn" id="2_k3wr6"]
 [ext_resource type="PackedScene" uid="uid://cufa0xtshck13" path="res://Player/Components/attack_component.tscn" id="3_qmocn"]
 [ext_resource type="PackedScene" uid="uid://h8lclvupdkv4" path="res://Attacks/projectile.tscn" id="4_xygqa"]
@@ -250,6 +251,8 @@ transform = Transform3D(0.7, 0, 0, 1.49012e-08, 0.3, 0, 0, 0, 0.6, -2.98023e-08,
 material_override = SubResource("StandardMaterial3D_8nwg8")
 mesh = SubResource("BoxMesh_ymgsi")
 skeleton = NodePath("../MeshInstance3D")
+
+[node name="BlockComponent" parent="Pivot" instance=ExtResource("2_dmokx")]
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_k3wr6")]
 

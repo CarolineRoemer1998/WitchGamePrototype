@@ -2,10 +2,10 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2eu5f"]
 transparency = 1
-albedo_color = Color(1, 1, 0.172549, 0.392157)
+albedo_color = Color(0.266667, 0.168627, 1, 0.392157)
 emission_enabled = true
-emission = Color(1, 0.34902, 0.286275, 1)
-emission_energy_multiplier = 2.0
+emission = Color(0.482353, 0.388235, 1, 1)
+emission_energy_multiplier = 16.0
 
 [sub_resource type="Curve" id="Curve_6qhbh"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.340426, 1), 0.0, 0.0, 0, 0, Vector2(0.75076, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]

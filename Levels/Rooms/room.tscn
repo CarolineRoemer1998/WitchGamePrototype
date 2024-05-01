@@ -30,56 +30,64 @@ size = Vector3(33, 1, 19)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 2.4, 5.5)
 material_override = ExtResource("1_nhwcb")
 use_collision = true
-collision_layer = 16
+collision_layer = 8
+collision_mask = 197
 size = Vector3(1, 5, 8)
 
 [node name="WallLeft4" type="CSGBox3D" parent="World"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 2.4, -5.5)
 material_override = ExtResource("1_nhwcb")
 use_collision = true
-collision_layer = 16
+collision_layer = 8
+collision_mask = 197
 size = Vector3(1, 5, 8)
 
 [node name="WallLeft2" type="CSGBox3D" parent="World"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 2.4, -5)
 material_override = ExtResource("1_nhwcb")
 use_collision = true
-collision_layer = 16
+collision_layer = 8
+collision_mask = 197
 size = Vector3(1, 5, 7)
 
 [node name="WallLeft3" type="CSGBox3D" parent="World"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 2.4, 5)
 material_override = ExtResource("1_nhwcb")
 use_collision = true
-collision_layer = 16
+collision_layer = 8
+collision_mask = 197
 size = Vector3(1, 5, 7)
 
 [node name="WallBottom" type="CSGBox3D" parent="World"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 2.4, 9)
 material_override = ExtResource("1_nhwcb")
 use_collision = true
-collision_layer = 16
+collision_layer = 8
+collision_mask = 197
 size = Vector3(14, 5, 1)
 
 [node name="WallBottom4" type="CSGBox3D" parent="World"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 2.4, -9)
 material_override = ExtResource("1_nhwcb")
 use_collision = true
-collision_layer = 16
+collision_layer = 8
+collision_mask = 197
 size = Vector3(14, 5, 1)
 
 [node name="WallBottom2" type="CSGBox3D" parent="World"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.96, 2.4, 8.965)
 material_override = ExtResource("1_nhwcb")
 use_collision = true
-collision_layer = 16
+collision_layer = 8
+collision_mask = 197
 size = Vector3(15, 5, 1)
 
 [node name="WallBottom3" type="CSGBox3D" parent="World"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.04, 2.4, -9.035)
 material_override = ExtResource("1_nhwcb")
 use_collision = true
-collision_layer = 16
+collision_layer = 8
+collision_mask = 197
 size = Vector3(15, 5, 1)
 
 [node name="Spawners" type="Node3D" parent="."]

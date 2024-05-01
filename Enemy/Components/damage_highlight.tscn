@@ -100,6 +100,7 @@ _data = {
 }
 
 [node name="DamageHighlight" type="Node3D"]
+visible = false
 script = ExtResource("1_8gxn0")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

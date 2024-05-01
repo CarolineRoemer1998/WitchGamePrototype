@@ -35,10 +35,11 @@ environment = SubResource("Environment_j1efq")
 [node name="Lighting" parent="Settings" instance=ExtResource("2_iqf64")]
 
 [node name="Purple" parent="Settings/Lighting" index="0"]
-light_color = Color(1, 0.403922, 0.752941, 1)
+light_color = Color(0.627451, 0.482353, 0.384314, 1)
 
 [node name="Green" parent="Settings/Lighting" index="1"]
-light_color = Color(0.341176, 0.541176, 0, 1)
+light_color = Color(1, 1, 1, 1)
+light_energy = 0.833
 
 [node name="Player" parent="." instance=ExtResource("2_8wp4o")]
 
