@@ -21,7 +21,7 @@ albedo_color = Color(0.8, 0.278431, 0, 1)
 
 [node name="Enemy" type="CharacterBody3D" groups=["clickable", "enemy"]]
 collision_layer = 4
-collision_mask = 29
+collision_mask = 541
 script = ExtResource("1_hpo51")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

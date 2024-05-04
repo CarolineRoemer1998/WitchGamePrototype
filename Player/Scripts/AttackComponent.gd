@@ -3,6 +3,7 @@ extends Node3D
 class_name Attack
 
 @onready var timer_cooldown: Timer = $TimerCooldown
+@onready var player: CharacterBody3D = $".."
 
 @export var strength := 20
 @export var cool_down := 1.0
@@ -46,14 +47,15 @@ func set_projectile_properties(_projectile: Area3D, target_position: Vector3):
 func handle_shooting():
 	var target
 	
-	if Input.is_action_pressed("ui_up"):
-		target = Vector3(0,0,-1)
-	elif Input.is_action_pressed("ui_down"):
-		target = Vector3(0,0,1)
-	elif Input.is_action_pressed("ui_left"):
-		target = Vector3(-1,0,0)
-	elif Input.is_action_pressed("ui_right"):
-		target = Vector3(1,0,0)
+	if player.is_blocking == false:
+		if Input.is_action_pressed("ui_up"):
+			target = Vector3(0,0,-1)
+		elif Input.is_action_pressed("ui_down"):
+			target = Vector3(0,0,1)
+		elif Input.is_action_pressed("ui_left"):
+			target = Vector3(-1,0,0)
+		elif Input.is_action_pressed("ui_right"):
+			target = Vector3(1,0,0)
 		
 	if target:
 		shoot(target)

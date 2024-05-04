@@ -14,6 +14,7 @@ const JUMP_VELOCITY = 8.5
 
 var is_walking: bool = false
 var is_running: bool = false
+var is_blocking: bool = false
 var jump_height: float = 3.0
 
 var is_active = true
@@ -56,11 +57,13 @@ func handle_block():
 		for child in block_component.get_children():
 			if child is CollisionShape3D:
 				child.disabled = false
+		is_blocking = true
 	elif Input.is_action_just_released("block"):
 		block_component.visible = false
 		for child in block_component.get_children():
 			if child is CollisionShape3D:
 				child.disabled = true
+		is_blocking = false
 
 func handle_movement(input_dir):
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
@@ -84,6 +87,6 @@ func handle_movement(input_dir):
 
 
 func rotate_and_move(input_dir):
-	if is_walking or is_running:
+	if (is_walking or is_running) and is_blocking == false:
 		pivot.look_at(position + Vector3(input_dir.x, 0, input_dir.y), Vector3.UP)
 	move_and_slide()

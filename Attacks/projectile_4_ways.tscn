@@ -22,6 +22,8 @@
 [node name="Projectile4Ways" type="Node3D"]
 top_level = true
 script = ExtResource("1_7bgau")
+speed = null
+strength = null
 
 [node name="Shot1" type="Area3D" parent="."]
 collision_layer = 64
