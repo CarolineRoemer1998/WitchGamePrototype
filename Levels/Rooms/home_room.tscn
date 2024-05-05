@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=3 uid="uid://c18x2a5nqxcsv"]
+
+[ext_resource type="Material" uid="uid://cyrstph6rcg3j" path="res://Fundamentals/World Design/Colors/home_wood.tres" id="1_bkqt5"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_rp4h2"]
+vertices = PackedVector3Array(-1, 0.5, 8, -0.75, 0.5, 9, 1, 0.5, 9, 1.25, 0.5, 7.75, 1.25, 0.5, 7.75, 3.25, 0.5, 7.75, 3.25, 0.5, -7.75, -8, 0.5, 8, -1, 0.5, 8, 1.25, 0.5, 7.75, -14.75, 0.5, 0, -14.75, 0.5, 8, -8, 0.5, 8, 1.25, 0.5, 7.75, 3.25, 0.5, -7.75, -5.75, 0.5, -7.75, -5.75, 0.5, -7.75, -14.75, 0.5, -7.75, -14.75, 0.5, 0, 3.25, 0.5, 7.75, 15, 0.5, 7.75, 15, 0.5, 0, 3.25, 0.5, -7.75, 15, 0.5, 0, 15, 0.5, -7.75, 3.25, 0.5, -7.75, 9, 5.5, 8.75, 2, 5.5, 8.75, 8.75, 5.5, 9, 16, 5.5, 9, 16, 5.5, 8.5, 9, 5.5, 8.75, 8.75, 5.5, 9)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(6, 5, 4), PackedInt32Array(9, 8, 7), PackedInt32Array(11, 10, 12), PackedInt32Array(12, 10, 13), PackedInt32Array(13, 10, 15), PackedInt32Array(13, 15, 14), PackedInt32Array(18, 17, 16), PackedInt32Array(20, 19, 21), PackedInt32Array(21, 19, 22), PackedInt32Array(25, 24, 23), PackedInt32Array(28, 27, 26), PackedInt32Array(30, 29, 31), PackedInt32Array(31, 29, 32)]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_onwk6"]
+albedo_color = Color(0.329412, 0.176471, 0.113725, 1)
+clearcoat_roughness = 1.0
+
+[node name="Home_Room" type="NavigationRegion3D"]
+navigation_mesh = SubResource("NavigationMesh_rp4h2")
+
+[node name="Floor" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+material_override = ExtResource("1_bkqt5")
+use_collision = true
+collision_layer = 16
+size = Vector3(33, 1, 19)
+
+[node name="Wall_1" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -9)
+material_override = ExtResource("1_bkqt5")
+size = Vector3(33, 5, 1)
+
+[node name="Wall_3" type="CSGBox3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -16, 2.5, 0)
+material_override = ExtResource("1_bkqt5")
+size = Vector3(17, 5, 1)
+
+[node name="Wall_4" type="CSGBox3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 16, 2.5, 0)
+material_override = ExtResource("1_bkqt5")
+size = Vector3(17, 5, 1)
+
+[node name="Wall_5" type="CSGBox3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -9, 2.5, 9)
+material_override = SubResource("StandardMaterial3D_onwk6")
+size = Vector3(15, 5, 1)
+
+[node name="Wall_6" type="CSGBox3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 9, 2.5, 8.99999)
+material_override = SubResource("StandardMaterial3D_onwk6")
+size = Vector3(15, 5, 1)

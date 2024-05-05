@@ -50,13 +50,13 @@ func handle_shooting():
 	var target
 	
 	if player.is_blocking == false:
-		if Input.is_action_pressed("ui_up"):
+		if Input.is_action_pressed("shoot_up"):
 			target = Vector3(0,0,-1)
-		elif Input.is_action_pressed("ui_down"):
+		elif Input.is_action_pressed("shoot_down"):
 			target = Vector3(0,0,1)
-		elif Input.is_action_pressed("ui_left"):
+		elif Input.is_action_pressed("shoot_left"):
 			target = Vector3(-1,0,0)
-		elif Input.is_action_pressed("ui_right"):
+		elif Input.is_action_pressed("shoot_right"):
 			target = Vector3(1,0,0)
 		
 	if target:

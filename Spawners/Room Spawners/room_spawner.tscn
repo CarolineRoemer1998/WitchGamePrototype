@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://r2rfn4ebfcdf"]
 
 [ext_resource type="Script" path="res://Spawners/Room Spawners/room_spawner.gd" id="1_m3l82"]
-[ext_resource type="PackedScene" uid="uid://cqgi0itarh7rl" path="res://Levels/Rooms/room.tscn" id="2_aqcfv"]
+[ext_resource type="PackedScene" uid="uid://cqgi0itarh7rl" path="res://Levels/Rooms/forest_room.tscn" id="2_aqcfv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kppno"]
 transparency = 1

@@ -4,3 +4,8 @@
 
 [node name="GameHandler" type="Node3D"]
 script = ExtResource("1_1e32r")
+
+[node name="TimerReturnHome" type="Timer" parent="."]
+wait_time = 0.5
+
+[connection signal="timeout" from="TimerReturnHome" to="." method="_on_timer_return_home_timeout"]

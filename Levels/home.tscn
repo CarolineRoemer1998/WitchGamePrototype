@@ -1,0 +1,52 @@
+[gd_scene load_steps=9 format=3 uid="uid://cp5c125rjj42u"]
+
+[ext_resource type="PackedScene" uid="uid://c18x2a5nqxcsv" path="res://Levels/Rooms/home_room.tscn" id="1_o0wwt"]
+[ext_resource type="PackedScene" uid="uid://cdftdgmhfq2qg" path="res://Fundamentals/Game Behaviour/game_states.tscn" id="2_abgq1"]
+[ext_resource type="PackedScene" uid="uid://bpxxhtfbucivk" path="res://Player/player.tscn" id="2_ptf52"]
+[ext_resource type="PackedScene" uid="uid://2vh5on6p5gqs" path="res://Fundamentals/Game Behaviour/game_handler.tscn" id="3_cl2il"]
+[ext_resource type="PackedScene" uid="uid://iik2ix1ta0av" path="res://Levels/Components/forest_loader.tscn" id="4_4hbg0"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bpfwa"]
+sky_top_color = Color(0.513726, 0.960784, 0.968627, 1)
+sky_horizon_color = Color(0.67353, 0.802941, 0.772549, 1)
+ground_bottom_color = Color(0.180392, 0.25098, 0.121569, 1)
+ground_horizon_color = Color(0.67353, 0.802941, 0.772549, 1)
+
+[sub_resource type="Sky" id="Sky_l6csp"]
+sky_material = SubResource("ProceduralSkyMaterial_bpfwa")
+
+[sub_resource type="Environment" id="Environment_rl3yi"]
+background_mode = 2
+sky = SubResource("Sky_l6csp")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="Home" type="Node3D"]
+
+[node name="Environment" type="Node3D" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment"]
+transform = Transform3D(1, -1.51421e-07, 8.74228e-08, 0, 0.5, 0.866025, -1.74846e-07, -0.866025, 0.5, 0, 0, 0)
+light_color = Color(1, 0.956863, 0.721569, 1)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
+environment = SubResource("Environment_rl3yi")
+
+[node name="GameHandler" parent="Environment" instance=ExtResource("3_cl2il")]
+
+[node name="GameStates" parent="Environment" instance=ExtResource("2_abgq1")]
+
+[node name="Home_Room" parent="." instance=ExtResource("1_o0wwt")]
+
+[node name="CameraSpot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 35, 20)
+
+[node name="Camera3D" type="Camera3D" parent="CameraSpot"]
+current = true
+fov = 27.0
+
+[node name="Player" parent="." instance=ExtResource("2_ptf52")]
+
+[node name="ForestLoader" parent="." instance=ExtResource("4_4hbg0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9.4)

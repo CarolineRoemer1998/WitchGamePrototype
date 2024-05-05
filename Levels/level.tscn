@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://2vh5on6p5gqs" path="res://Fundamentals/Game Behaviour/game_handler.tscn" id="1_6a06j"]
 [ext_resource type="PackedScene" uid="uid://bpxxhtfbucivk" path="res://Player/player.tscn" id="2_8wp4o"]
 [ext_resource type="PackedScene" uid="uid://4igys64c0trc" path="res://Fundamentals/World Design/Light/normal_lighting.tscn" id="2_iqf64"]
-[ext_resource type="PackedScene" uid="uid://cqgi0itarh7rl" path="res://Levels/Rooms/room.tscn" id="3_sntag"]
+[ext_resource type="PackedScene" uid="uid://cqgi0itarh7rl" path="res://Levels/Rooms/forest_room.tscn" id="3_sntag"]
 [ext_resource type="Script" path="res://Levels/Components/game_camera.gd" id="5_cb1ts"]
 [ext_resource type="PackedScene" uid="uid://dv7dc6fau261h" path="res://Spawners/Room Spawners/room_spawners.tscn" id="5_e5kp1"]
 [ext_resource type="PackedScene" uid="uid://nhwcrirmgdja" path="res://Fundamentals/UI/health_bar.tscn" id="6_2inwf"]
