@@ -6,7 +6,7 @@ class_name Player
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var health_component: Node3D = $HealthComponent
 @onready var attack_component: Node3D = $AttackComponent
-@onready var block_component: Area3D = $Pivot/BlockComponent
+@onready var block_component: Block = $Pivot/BlockComponent
 
 var speed_walking = 7.0
 var speed_running = 12.0
@@ -21,6 +21,9 @@ var is_active = true
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
+
+func _ready() -> void:
+	block_component.owner_type="Player"
 
 func _physics_process(delta: float) -> void:
 	if is_active:
@@ -87,6 +90,6 @@ func handle_movement(input_dir):
 
 
 func rotate_and_move(input_dir):
-	if (is_walking or is_running) and is_blocking == false:
+	if (is_walking or is_running):
 		pivot.look_at(position + Vector3(input_dir.x, 0, input_dir.y), Vector3.UP)
 	move_and_slide()

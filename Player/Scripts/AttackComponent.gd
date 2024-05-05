@@ -5,10 +5,10 @@ class_name Attack
 @onready var timer_cooldown: Timer = $TimerCooldown
 @onready var player: CharacterBody3D = $".."
 
-@export var strength := 20
+@export var strength := 20.0
 @export var cool_down := 1.0
 @export var projectile : PackedScene
-@export var projectile_speed := 15
+@export var projectile_speed := 15.0
 @export var projectile_size := 1.0
 
 var is_cooling_down = false
@@ -43,6 +43,8 @@ func set_projectile_properties(_projectile: Area3D, target_position: Vector3):
 	_projectile.direction = target_position
 	_projectile.speed = projectile_speed
 	_projectile.scale *= projectile_size
+	_projectile.strength = strength
+	_projectile.source_type = "Player"
 	
 func handle_shooting():
 	var target

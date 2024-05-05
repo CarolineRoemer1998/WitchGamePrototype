@@ -40,7 +40,6 @@ mesh = SubResource("BoxMesh_oac5q")
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 
 [node name="EnemyAttack" parent="." instance=ExtResource("4_ipth6")]
-strength = 30
 cool_down = 2.5
 projectile = ExtResource("5_cwdhf")
 projectile_speed = 15

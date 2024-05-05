@@ -158,10 +158,9 @@ libraries = {
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 
 [node name="EnemyAttack" parent="." instance=ExtResource("1_x25b7")]
-strength = 10
 cool_down = 1.5
 projectile = ExtResource("2_2e2ho")
-projectile_speed = 15
+projectile_speed = 15.0
 
 [node name="EnemyHealth" parent="." node_paths=PackedStringArray("animation_player_damage") instance=ExtResource("3_llrye")]
 animation_player_damage = NodePath("../DamageHighlight/AnimationPlayerDamage")

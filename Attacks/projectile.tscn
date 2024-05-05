@@ -15,7 +15,7 @@ points = PackedVector3Array(-0.499434, -0.0238842, 0, -0.497087, -0.0238842, 0.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.68575e-08, 0)
 top_level = true
 collision_layer = 128
-collision_mask = 269
+collision_mask = 781
 script = ExtResource("1_yntcn")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

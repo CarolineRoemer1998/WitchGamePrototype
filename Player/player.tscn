@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://h8lclvupdkv4" path="res://Attacks/projectile.tscn" id="4_xygqa"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_oqliy"]
-height = 1.8
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jeyw3"]
 albedo_color = Color(0.839216, 0.34902, 1, 1)

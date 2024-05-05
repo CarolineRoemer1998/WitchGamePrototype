@@ -1,97 +1,16 @@
-[gd_scene load_steps=11 format=3 uid="uid://b8u5vgpjkt2wj"]
+[gd_scene load_steps=3 format=3 uid="uid://b8u5vgpjkt2wj"]
 
 [ext_resource type="Script" path="res://Attacks/projectile_4_ways.gd" id="1_7bgau"]
-[ext_resource type="Material" uid="uid://h8c0noqf3tcl" path="res://Fundamentals/World Design/Colors/enemy_attack.tres" id="2_dmm0y"]
-
-[sub_resource type="SphereMesh" id="SphereMesh_dxd30"]
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_mdbdj"]
-
-[sub_resource type="SphereMesh" id="SphereMesh_qpvxi"]
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_ai3fo"]
-
-[sub_resource type="SphereMesh" id="SphereMesh_0ako2"]
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_b2guw"]
-
-[sub_resource type="SphereMesh" id="SphereMesh_ssrkn"]
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_ygimw"]
+[ext_resource type="PackedScene" uid="uid://h8lclvupdkv4" path="res://Attacks/projectile.tscn" id="2_akvi2"]
 
 [node name="Projectile4Ways" type="Node3D"]
 top_level = true
 script = ExtResource("1_7bgau")
-speed = null
-strength = null
-
-[node name="Shot1" type="Area3D" parent="."]
-collision_layer = 64
-collision_mask = 525
-
-[node name="MeshShot1" type="MeshInstance3D" parent="Shot1"]
-transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0.217721, 0)
-material_override = ExtResource("2_dmm0y")
-mesh = SubResource("SphereMesh_dxd30")
-skeleton = NodePath("../..")
-
-[node name="ColShot1" type="CollisionShape3D" parent="Shot1"]
-transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0.217721, 0)
-shape = SubResource("SphereShape3D_mdbdj")
-
-[node name="Shot2" type="Area3D" parent="."]
-collision_layer = 64
-collision_mask = 517
-
-[node name="MeshShot2" type="MeshInstance3D" parent="Shot2"]
-transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0.217721, 0)
-material_override = ExtResource("2_dmm0y")
-mesh = SubResource("SphereMesh_qpvxi")
-skeleton = NodePath("../..")
-
-[node name="ColShot2" type="CollisionShape3D" parent="Shot2"]
-transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0.217721, 0)
-shape = SubResource("SphereShape3D_ai3fo")
-
-[node name="Shot3" type="Area3D" parent="."]
-collision_layer = 64
-collision_mask = 517
-
-[node name="MeshShot3" type="MeshInstance3D" parent="Shot3"]
-transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0.217721, 0)
-material_override = ExtResource("2_dmm0y")
-mesh = SubResource("SphereMesh_0ako2")
-skeleton = NodePath("../..")
-
-[node name="ColShot3" type="CollisionShape3D" parent="Shot3"]
-transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0.217721, 0)
-shape = SubResource("SphereShape3D_b2guw")
-
-[node name="Shot4" type="Area3D" parent="."]
-collision_layer = 64
-collision_mask = 517
-
-[node name="MeshShot4" type="MeshInstance3D" parent="Shot4"]
-transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0.217721, 0)
-material_override = ExtResource("2_dmm0y")
-mesh = SubResource("SphereMesh_ssrkn")
-skeleton = NodePath("../..")
-
-[node name="ColShot4" type="CollisionShape3D" parent="Shot4"]
-transform = Transform3D(0.616, 0, 0, 0, 0.616, 0, 0, 0, 0.616, 0, 0.217721, 0)
-shape = SubResource("SphereShape3D_ygimw")
+shot = ExtResource("2_akvi2")
 
 [node name="TimerDespawn" type="Timer" parent="."]
 wait_time = 10.0
 one_shot = true
 autostart = true
 
-[connection signal="area_entered" from="Shot1" to="." method="_on_shot_1_area_entered"]
-[connection signal="body_entered" from="Shot1" to="." method="_on_shot_1_body_entered"]
-[connection signal="area_entered" from="Shot2" to="." method="_on_shot_2_area_entered"]
-[connection signal="body_entered" from="Shot2" to="." method="_on_shot_2_body_entered"]
-[connection signal="area_entered" from="Shot3" to="." method="_on_shot_3_area_entered"]
-[connection signal="body_entered" from="Shot3" to="." method="_on_shot_3_body_entered"]
-[connection signal="area_entered" from="Shot4" to="." method="_on_shot_4_area_entered"]
-[connection signal="body_entered" from="Shot4" to="." method="_on_shot_4_body_entered"]
 [connection signal="timeout" from="TimerDespawn" to="." method="_on_timer_despawn_timeout"]
