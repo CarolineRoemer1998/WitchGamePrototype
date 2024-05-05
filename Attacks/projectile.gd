@@ -21,19 +21,19 @@ func set_type():
     set_collision_mask_value(4,true)
     
     if source_type == "Player":
-        set_collision_layer_value(8,true)
-        set_collision_mask_value(3,true)
-        set_collision_mask_value(9,true)
+        set_collision_layer_value(8,true)   # PlayerAttack
+        set_collision_mask_value(9,true)    # EnemyBlock
+        set_collision_mask_value(11,true)   # EnemyDmgBox
         set_collision_layer_value(7,false)
-        set_collision_mask_value(1,false)
         set_collision_mask_value(10,false)
+        set_collision_mask_value(12,false)
     if source_type == "Enemy":
-        set_collision_layer_value(7,true)
-        set_collision_mask_value(1,true)
-        set_collision_mask_value(10,true)
+        set_collision_layer_value(7,true)   # EnemyAttack
+        set_collision_mask_value(10,true)   # PlayerBlock
+        set_collision_mask_value(12,true)   # PlayerDmgBox
         set_collision_layer_value(8,false)
-        set_collision_mask_value(3,false)
         set_collision_mask_value(9,false)        
+        set_collision_mask_value(11,false)
         
 
 func _on_timer_despawn_timeout() -> void:
@@ -43,9 +43,12 @@ func _on_timer_despawn_timeout() -> void:
 func _on_body_entered(body: Node3D) -> void:
     if body.get_collision_layer_value(4):
         queue_free()
-    elif body is Enemy and source_type == "Player":
-        body.enemy_health.lose_health(strength)
+
+
+func _on_area_entered(area: Area3D) -> void:
+    if area.get_collision_layer_value(12) and area.get_parent() is Player:
+        area.get_parent().health_component.lose_health(strength)
         queue_free()
-    elif body is Player and source_type == "Enemy":
-        body.health_component.lose_health(strength)
+    elif area.get_collision_layer_value(11) and area.get_parent() is Enemy:
+        area.get_parent().enemy_health.lose_health(strength)
         queue_free()

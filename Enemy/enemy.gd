@@ -6,6 +6,7 @@ class_name Enemy
 @onready var pivot: Node3D = $MeshPivot
 @onready var enemy_health: Node3D = $EnemyHealth
 @onready var enemy_attack: Node3D = $EnemyAttack
+@onready var dmg_box: Area3D = $DmgBox
 
 @export var aggro_range := 10.0
 @export var is_triggered := false
@@ -19,6 +20,13 @@ var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player")
+	
+	# Set Layer to PlayerDmgBox
+	dmg_box.set_collision_layer_value(11,true)
+	dmg_box.set_collision_layer_value(12,false)
+	# Set Mask to EnemyAttack
+	dmg_box.set_collision_mask_value(8,true)
+	dmg_box.set_collision_mask_value(7,false)
 
 func _process(delta: float) -> void:
 	navigation_agent_3d.target_position = player.global_position

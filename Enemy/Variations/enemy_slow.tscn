@@ -1,13 +1,15 @@
-[gd_scene load_steps=19 format=3 uid="uid://cqhe5nvkpcojw"]
+[gd_scene load_steps=20 format=3 uid="uid://cqhe5nvkpcojw"]
 
 [ext_resource type="PackedScene" uid="uid://bqumlnt1nj0nr" path="res://Enemy/Components/enemy_attack.tscn" id="1_4fqg8"]
 [ext_resource type="Script" path="res://Enemy/enemy.gd" id="1_dqol7"]
 [ext_resource type="PackedScene" uid="uid://b8u5vgpjkt2wj" path="res://Attacks/projectile_4_ways.tscn" id="2_266i3"]
+[ext_resource type="PackedScene" uid="uid://ckybcinqy085e" path="res://Enemy/Components/enemy_dmg_box.tscn" id="2_mlicx"]
 [ext_resource type="Script" path="res://Enemy/Components/damage_highlight.gd" id="2_qrebf"]
 [ext_resource type="PackedScene" uid="uid://de7qa7h6f2nbp" path="res://Enemy/Components/enemy_health.tscn" id="3_vjwsl"]
 [ext_resource type="PackedScene" uid="uid://kiwc4v3xkajw" path="res://Enemy/Components/health_bar_enemy.tscn" id="5_gufus"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1g6k6"]
+radius = 0.7
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4b2rv"]
 albedo_color = Color(0.156863, 0.25098, 0.45098, 1)
@@ -125,6 +127,8 @@ script = ExtResource("1_dqol7")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_1g6k6")
 
+[node name="DmgBox" parent="." instance=ExtResource("2_mlicx")]
+
 [node name="MeshPivot" type="Node3D" parent="."]
 
 [node name="MeshInstance3D_Body" type="MeshInstance3D" parent="MeshPivot"]
@@ -159,8 +163,8 @@ libraries = {
 [node name="EnemyAttack" parent="." instance=ExtResource("1_4fqg8")]
 cool_down = 2.0
 projectile = ExtResource("2_266i3")
-projectile_speed = 15
-projectile_size = 2.0
+projectile_speed = 15.0
+projectile_size = 1.5
 
 [node name="EnemyHealth" parent="." node_paths=PackedStringArray("animation_player_damage") instance=ExtResource("3_vjwsl")]
 animation_player_damage = NodePath("../DamageHighlight/AnimationPlayerDamage")

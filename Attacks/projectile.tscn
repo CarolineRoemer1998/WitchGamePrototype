@@ -14,8 +14,8 @@ points = PackedVector3Array(-0.499434, -0.0238842, 0, -0.497087, -0.0238842, 0.0
 [node name="Projectile" type="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.68575e-08, 0)
 top_level = true
-collision_layer = 128
-collision_mask = 781
+collision_layer = 192
+collision_mask = 3853
 script = ExtResource("1_yntcn")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -32,5 +32,6 @@ wait_time = 3.0
 one_shot = true
 autostart = true
 
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="TimerDespawn" to="." method="_on_timer_despawn_timeout"]

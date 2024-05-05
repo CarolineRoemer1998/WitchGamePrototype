@@ -78,3 +78,5 @@ block={
 3d_physics/layer_8="PlayerAttack"
 3d_physics/layer_9="EnemyBlock"
 3d_physics/layer_10="PlayerBlock"
+3d_physics/layer_11="EnemyDmgBox"
+3d_physics/layer_12="PlayerDmgBox"

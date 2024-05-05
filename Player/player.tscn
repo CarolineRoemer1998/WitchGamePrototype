@@ -1,12 +1,14 @@
-[gd_scene load_steps=21 format=3 uid="uid://bpxxhtfbucivk"]
+[gd_scene load_steps=22 format=3 uid="uid://bpxxhtfbucivk"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_0avnk"]
 [ext_resource type="PackedScene" uid="uid://cu2nrjpbopxob" path="res://Player/Components/block_component.tscn" id="2_dmokx"]
 [ext_resource type="PackedScene" uid="uid://bl17hsyrnpikx" path="res://Player/Components/health_component.tscn" id="2_k3wr6"]
+[ext_resource type="PackedScene" uid="uid://bw74t02u0f76c" path="res://Player/Components/dmg_box.tscn" id="2_ptimx"]
 [ext_resource type="PackedScene" uid="uid://cufa0xtshck13" path="res://Player/Components/attack_component.tscn" id="3_qmocn"]
 [ext_resource type="PackedScene" uid="uid://h8lclvupdkv4" path="res://Attacks/projectile.tscn" id="4_xygqa"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_oqliy"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_b5vsw"]
+radius = 0.7
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jeyw3"]
 albedo_color = Color(0.839216, 0.34902, 1, 1)
@@ -212,12 +214,14 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody3D"]
-collision_mask = 62
+collision_mask = 63
 script = ExtResource("1_0avnk")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." groups=["player"]]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("CapsuleShape3D_oqliy")
+shape = SubResource("CapsuleShape3D_b5vsw")
+
+[node name="DmgBox" parent="." instance=ExtResource("2_ptimx")]
 
 [node name="Pivot" type="Node3D" parent="." groups=["pivot"]]
 
@@ -228,7 +232,7 @@ transform = Transform3D(0.999997, 0, 0, 0, 0.999997, 0, 0, 0, 1, 0, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 material_override = SubResource("StandardMaterial3D_jeyw3")
 mesh = SubResource("CapsuleMesh_foo1e")
-skeleton = NodePath("../../../CollisionShape3D")
+skeleton = NodePath("../../../DmgBox/Collision_DmgBox")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Pivot/Meshes"]
 transform = Transform3D(0.7, 0, 0, 1.49012e-08, 0.3, 0, 0, 0, 0.6, -2.98023e-08, 1.4, -0.3)
@@ -243,7 +247,7 @@ visible = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 material_override = SubResource("StandardMaterial3D_1v0xt")
 mesh = SubResource("CapsuleMesh_foo1e")
-skeleton = NodePath("../../../../CollisionShape3D")
+skeleton = NodePath("../../../../DmgBox/Collision_DmgBox")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Pivot/Meshes/DamageHighlight"]
 transform = Transform3D(0.7, 0, 0, 1.49012e-08, 0.3, 0, 0, 0, 0.6, -2.98023e-08, 1.4, -0.3)

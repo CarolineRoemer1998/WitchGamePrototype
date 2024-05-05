@@ -7,6 +7,7 @@ class_name Player
 @onready var health_component: Node3D = $HealthComponent
 @onready var attack_component: Node3D = $AttackComponent
 @onready var block_component: Block = $Pivot/BlockComponent
+@onready var dmg_box: Area3D = $DmgBox
 
 var speed_walking = 7.0
 var speed_running = 12.0
@@ -24,7 +25,15 @@ var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _ready() -> void:
 	block_component.owner_type="Player"
-
+	# Set Layer to PlayerDmgBox
+	dmg_box.set_collision_layer_value(12,true)
+	dmg_box.set_collision_layer_value(11,false)
+	# Set Mask to EnemyAttack
+	dmg_box.set_collision_mask_value(7,true)
+	dmg_box.set_collision_mask_value(8,false)
+	
+	
+	
 func _physics_process(delta: float) -> void:
 	if is_active:
 		var input_dir := Input.get_vector("left", "right", "up", "down")
