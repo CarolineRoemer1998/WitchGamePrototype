@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cqgi0itarh7rl"]
+[gd_scene load_steps=9 format=3 uid="uid://cqgi0itarh7rl"]
 
 [ext_resource type="Material" uid="uid://bpqw2klv8hgco" path="res://Fundamentals/World Design/Colors/grass.tres" id="1_nhwcb"]
 [ext_resource type="PackedScene" uid="uid://og2eqnvvmr2g" path="res://Spawners/enemy_spawner.tscn" id="2_4wg51"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://d1r5lve8ox5lo" path="res://Fundamentals/World Design/Particles/magical_bubbles.tscn" id="4_dpk6o"]
 [ext_resource type="PackedScene" uid="uid://brsttxerok5gd" path="res://Environment/Grass/grass.tscn" id="5_wmhgb"]
 [ext_resource type="PackedScene" uid="uid://kk5te5k8xjie" path="res://Environment/Bush/bush.tscn" id="6_f7osw"]
+[ext_resource type="PackedScene" uid="uid://ppftyixbpmfh" path="res://Environment/Pinetree/Assets/pinetree.blend" id="7_vylie"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_eerhh"]
 vertices = PackedVector3Array(-16.04, 5.25, -9.035, -16.04, 5.25, -1.785, -15.54, 5.25, -8.785, -1.04, 0.5, 7.965, -0.790001, 0.5, 8.965, 0.959999, 0.5, 8.965, 1.21, 0.5, 7.965, 1.21, 0.5, -7.785, -1.04, 0.5, -7.785, -2.79, 0.5, -7.785, -2.79, 0.5, 7.965, -1.04, 0.5, 7.965, -1.04, 0.5, -7.785, 1.21, 0.5, -7.785, 0.959999, 0.5, -9.035, -0.790001, 0.5, -9.035, -1.04, 0.5, -7.785, 1.21, 0.5, 7.965, 2.96, 0.5, 7.965, 2.96, 0.5, -7.785, 1.21, 0.5, -7.785, 8.96, 5.25, -9.035, 1.96, 5.25, -9.035, 8.96, 5.25, -8.785, 8.96, 5.25, -8.785, 15.96, 5.25, -8.535, 15.96, 5.25, -9.035, 8.96, 5.25, -9.035, -14.79, 0.5, -1.035, -16.04, 0.5, -0.785, -16.04, 0.5, 0.965, -14.79, 0.5, 1.215, -2.79, 0.5, 7.965, -2.79, 0.5, -7.785, -14.79, 0.5, -1.035, -14.79, 0.5, 1.215, -2.79, 0.5, -7.785, -14.79, 0.5, -7.785, -14.79, 0.5, -1.035, -14.79, 0.5, 1.215, -14.79, 0.5, 7.965, -2.79, 0.5, 7.965, 14.96, 0.5, 1.215, 15.96, 0.5, 0.965, 15.96, 0.5, -0.785, 14.96, 0.5, -1.035, 2.96, 0.5, 7.965, 14.96, 0.5, 1.215, 14.96, 0.5, -1.035, 2.96, 0.5, -7.785, 2.96, 0.5, 7.965, 14.96, 0.5, 7.965, 14.96, 0.5, 1.215, 14.96, 0.5, -1.035, 14.96, 0.5, -7.785, 2.96, 0.5, -7.785, -16.04, 5.25, 1.965, -16.04, 5.25, 8.965, -15.54, 5.25, 8.965)
@@ -28,6 +29,7 @@ size = Vector3(33, 1, 19)
 
 [node name="WallLeft" type="CSGBox3D" parent="World"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 2.4, 5.5)
+visible = false
 material_override = ExtResource("1_nhwcb")
 use_collision = true
 collision_layer = 8
@@ -36,6 +38,7 @@ size = Vector3(1, 5, 8)
 
 [node name="WallLeft4" type="CSGBox3D" parent="World"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 2.4, -5.5)
+visible = false
 material_override = ExtResource("1_nhwcb")
 use_collision = true
 collision_layer = 8
@@ -44,6 +47,7 @@ size = Vector3(1, 5, 8)
 
 [node name="WallLeft2" type="CSGBox3D" parent="World"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 2.4, -5)
+visible = false
 material_override = ExtResource("1_nhwcb")
 use_collision = true
 collision_layer = 8
@@ -52,6 +56,7 @@ size = Vector3(1, 5, 7)
 
 [node name="WallLeft3" type="CSGBox3D" parent="World"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 2.4, 5)
+visible = false
 material_override = ExtResource("1_nhwcb")
 use_collision = true
 collision_layer = 8
@@ -60,6 +65,7 @@ size = Vector3(1, 5, 7)
 
 [node name="WallBottom" type="CSGBox3D" parent="World"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 2.4, 9)
+visible = false
 material_override = ExtResource("1_nhwcb")
 use_collision = true
 collision_layer = 8
@@ -68,6 +74,7 @@ size = Vector3(14, 5, 1)
 
 [node name="WallBottom4" type="CSGBox3D" parent="World"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 2.4, -9)
+visible = false
 material_override = ExtResource("1_nhwcb")
 use_collision = true
 collision_layer = 8
@@ -76,6 +83,7 @@ size = Vector3(14, 5, 1)
 
 [node name="WallBottom2" type="CSGBox3D" parent="World"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.96, 2.4, 8.965)
+visible = false
 material_override = ExtResource("1_nhwcb")
 use_collision = true
 collision_layer = 8
@@ -84,6 +92,7 @@ size = Vector3(15, 5, 1)
 
 [node name="WallBottom3" type="CSGBox3D" parent="World"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.04, 2.4, -9.035)
+visible = false
 material_override = ExtResource("1_nhwcb")
 use_collision = true
 collision_layer = 8
@@ -292,3 +301,125 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -7)
 
 [node name="Bush3" parent="BushTiles" instance=ExtResource("6_f7osw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 3)
+
+[node name="Trees" type="Node3D" parent="."]
+
+[node name="pinetree" parent="Trees" instance=ExtResource("7_vylie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, -8)
+
+[node name="pinetree8" parent="Trees" instance=ExtResource("7_vylie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, -6)
+
+[node name="pinetree9" parent="Trees" instance=ExtResource("7_vylie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, -4)
+
+[node name="pinetree10" parent="Trees" instance=ExtResource("7_vylie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, -2)
+
+[node name="pinetree32" parent="Trees" instance=ExtResource("7_vylie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, 3)
+
+[node name="pinetree33" parent="Trees" instance=ExtResource("7_vylie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, 5)
+
+[node name="pinetree34" parent="Trees" instance=ExtResource("7_vylie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, 7)
+
+[node name="pinetree35" parent="Trees" instance=ExtResource("7_vylie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 3)
+
+[node name="pinetree36" parent="Trees" instance=ExtResource("7_vylie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 5)
+
+[node name="pinetree37" parent="Trees" instance=ExtResource("7_vylie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 7)
+
+[node name="pinetree38" parent="Trees" instance=ExtResource("7_vylie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, -6)
+
+[node name="pinetree39" parent="Trees" instance=ExtResource("7_vylie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, -4)
+
+[node name="pinetree40" parent="Trees" instance=ExtResource("7_vylie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, -2)
+
+[node name="pinetree2" parent="Trees" instance=ExtResource("7_vylie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, -9)
+
+[node name="pinetree3" parent="Trees" instance=ExtResource("7_vylie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, -8)
+
+[node name="pinetree4" parent="Trees" instance=ExtResource("7_vylie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, -9)
+
+[node name="pinetree5" parent="Trees" instance=ExtResource("7_vylie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -8)
+
+[node name="pinetree6" parent="Trees" instance=ExtResource("7_vylie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -9)
+
+[node name="pinetree7" parent="Trees" instance=ExtResource("7_vylie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -8)
+
+[node name="pinetree11" parent="Trees" instance=ExtResource("7_vylie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -8)
+
+[node name="pinetree12" parent="Trees" instance=ExtResource("7_vylie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -9)
+
+[node name="pinetree13" parent="Trees" instance=ExtResource("7_vylie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -8)
+
+[node name="pinetree14" parent="Trees" instance=ExtResource("7_vylie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -9)
+
+[node name="pinetree15" parent="Trees" instance=ExtResource("7_vylie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, -8)
+
+[node name="pinetree16" parent="Trees" instance=ExtResource("7_vylie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, -9)
+
+[node name="pinetree17" parent="Trees" instance=ExtResource("7_vylie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, -8)
+
+[node name="pinetree18" parent="Trees" instance=ExtResource("7_vylie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 10)
+
+[node name="pinetree19" parent="Trees" instance=ExtResource("7_vylie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 11)
+
+[node name="pinetree20" parent="Trees" instance=ExtResource("7_vylie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 10)
+
+[node name="pinetree21" parent="Trees" instance=ExtResource("7_vylie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 11)
+
+[node name="pinetree22" parent="Trees" instance=ExtResource("7_vylie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 10)
+
+[node name="pinetree23" parent="Trees" instance=ExtResource("7_vylie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 11)
+
+[node name="pinetree24" parent="Trees" instance=ExtResource("7_vylie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 10)
+
+[node name="pinetree25" parent="Trees" instance=ExtResource("7_vylie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, 10)
+
+[node name="pinetree26" parent="Trees" instance=ExtResource("7_vylie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, 11)
+
+[node name="pinetree27" parent="Trees" instance=ExtResource("7_vylie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 10)
+
+[node name="pinetree28" parent="Trees" instance=ExtResource("7_vylie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 11)
+
+[node name="pinetree29" parent="Trees" instance=ExtResource("7_vylie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 10)
+
+[node name="pinetree30" parent="Trees" instance=ExtResource("7_vylie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 11)
+
+[node name="pinetree31" parent="Trees" instance=ExtResource("7_vylie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 10)
